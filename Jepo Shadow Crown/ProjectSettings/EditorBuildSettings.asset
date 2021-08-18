@@ -4,5 +4,62 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 35dcce736d733e748ba945912d538fe5
+  - enabled: 1
+    path: Assets/Scenes/MarbleTempleIntro.unity
+    guid: b001f3cb8713a1c449d2eb764491935c
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Start.unity
+    guid: 202e4b73a43523f498cfa5e739a25003
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room00.unity
+    guid: 43236f4e91f463c4e9166d8948475f26
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room01.unity
+    guid: ba2f13bac6084984498d7d7b6cf039a5
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room03.unity
+    guid: 030efc60f456e4b44a94f76ced438c82
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room02.unity
+    guid: 4b69ce0e3edc91149af2c01e9cd0944e
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room04.unity
+    guid: 50b7ec4051243144e87e886677294bb7
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room05.unity
+    guid: faab33ce02e92f14492599099faf3c12
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room06.unity
+    guid: bbab4b6c3c07fb840b2355ea1d557ebd
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room07.unity
+    guid: 1e77e61547b7fba43910e1778703dd39
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room08.unity
+    guid: 54d7ad9e9c5416b4698f4d677f51374d
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room09.unity
+    guid: 12bec1f386aebfa49bd9d812bb5eef26
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room10.unity
+    guid: bbdd7993cf4277941993d5135670a717
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room11.unity
+    guid: 63fee0fa90441f04baf69eb823effeae
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room12.unity
+    guid: c8496a52d1c5158459f18a7cfae5967b
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room13.unity
+    guid: 07d1e1fe40c47df44a3837dd66fa7e60
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room14.unity
+    guid: 3dcd146bc1a0ef747846bc94cdf660ae
+  - enabled: 1
+    path: Assets/Scenes/Rooms/Level1/Level1Room15.unity
+    guid: 3a4596be01d7d2442a570d8f42624b05
   m_configObjects: {}

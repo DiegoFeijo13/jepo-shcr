@@ -33,13 +33,23 @@ public class CharacterBaseControl : MonoBehaviour
 
     protected void OnAttackPressed()
     {
-        if (_movementModel == null)
+        if (_movementModel == null || _movementView == null)
+            return;
+
+        if (!_movementModel.CanAttack())
+            return;
+        
+        _movementView.DoAttack();
+    }
+
+    protected void OnSecondAttackPressed()
+    {
+        if (_movementModel == null || _movementView == null)
             return;
 
         if (!_movementModel.CanAttack())
             return;
 
-        _movementModel.DoAttack();
-        _movementView.DoAttack();
+        _movementView.DoSecondAttack();
     }
 }

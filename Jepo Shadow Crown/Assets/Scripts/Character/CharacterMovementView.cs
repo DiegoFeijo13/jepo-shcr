@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Objects;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovementView : MonoBehaviour
-{
-    public Animator Animator;
+public class CharacterMovementView : BaseMovementView
+{    
     public Transform WeaponParent;
     public GameObject _visuals;
+    public GameObject Projectile;
 
     private CharacterMovementModel _movementModel;
     private bool _isFacingRight = true;
@@ -34,6 +36,14 @@ public class CharacterMovementView : MonoBehaviour
         if ((facingDirection.x == 1 && !_isFacingRight) || (facingDirection.x == -1 && _isFacingRight))
             Flip();
 
+        Vector3 direction = _movementModel.GetDirection();
+
+        if (direction != Vector3.zero)
+        {
+            Animator.SetFloat("moveX", direction.x);
+            Animator.SetFloat("moveY", direction.y);
+        }
+
         Animator.SetBool("isMoving", _movementModel.IsMoving());
     }
 
@@ -45,26 +55,53 @@ public class CharacterMovementView : MonoBehaviour
         _visuals.transform.localScale = scale;
     }
 
-    public void DoAttack()
+    public override void DoAttack()
     {
-        Animator.SetTrigger("doAttack");
+        StartCoroutine(AttackCo());
     }
 
-    public void OnAttackStart()
+    private IEnumerator AttackCo()
     {
-        SetWeaponActive(true);
+        _movementModel.SetState(MovementState.attacking);
+        Animator.SetBool("isAttacking", true);
+        yield return null;
+        Animator.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(0.5f);
+        if(_movementModel.GetState() != MovementState.interacting)
+        {
+            _movementModel.SetState(MovementState.idle);
+        }
     }
 
-    public void OnAttackStop()
+    public void DoSecondAttack()
     {
-        SetWeaponActive(false);
+        StartCoroutine(SecondAttackCo());
     }
 
-    void SetWeaponActive(bool doActivate)
+    private IEnumerator SecondAttackCo()
     {
-        //for (int i = 0; i < WeaponParent.childCount; i++)
-        //{
-        //    WeaponParent.GetChild(i).gameObject.SetActive(doActivate);
-        //}
+        _movementModel.SetState(MovementState.attacking);
+        //Animator.SetBool("isAttacking", true);
+        yield return null;
+        MakeBullet();
+        //Animator.SetBool("isAttacking", false);
+        yield return new WaitForSeconds(0.5f);
+        if (_movementModel.GetState() != MovementState.interacting)
+        {
+            _movementModel.SetState(MovementState.idle);
+        }
+    }
+
+    private void MakeBullet()
+    {
+        Vector2 temp = new Vector2(Animator.GetFloat("moveX"), Animator.GetFloat("moveY"));
+        Bullet arrow = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Bullet>();
+        arrow.Setup(temp, ChooseArrowDirection());
+    }
+
+    Vector3 ChooseArrowDirection()
+    {
+        float temp = Mathf.Atan2(Animator.GetFloat("moveY"), Animator.GetFloat("moveX")) * Mathf.Rad2Deg;
+        return new Vector3(0, 0, temp);
     }
 }

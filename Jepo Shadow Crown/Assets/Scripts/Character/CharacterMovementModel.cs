@@ -1,23 +1,23 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovementModel : MonoBehaviour
+public class CharacterMovementModel : BaseMovementModel
 {
-    public float Speed;
-
-    private Vector3 _movementDirection;
-    private Vector3 _facingDirection;
-    private Rigidbody2D _body;
-    private bool _isFrozen;
-    private bool _isAttacking;
+ 
 
     private void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
+        _currentState = MovementState.idle;
     }
 
-    
+    private void Update()
+    {
+        UpdatePushTime();
+    }
+
+
     void Start()
     {
         SetDirection(new Vector2(0, -1));
@@ -28,74 +28,18 @@ public class CharacterMovementModel : MonoBehaviour
         UpdateMovement();
     }
 
-    void UpdateMovement()
+    protected override void UpdateMovement()
     {
-        if (_isFrozen)
-        {
-            _body.velocity = Vector2.zero;
-            return;
-        }
-
-        if (_movementDirection != Vector3.zero)
-            _movementDirection.Normalize();
-
-        _body.velocity = _movementDirection * Speed;
+        base.UpdateMovement();
     }
 
-    public void SetDirection(Vector2 direction)
+    internal void SetState(MovementState state)
     {
-        if (_isFrozen)
-            return;
-
-        _movementDirection = new Vector3(direction.x, direction.y, 0);
-        if (direction != Vector2.zero)
-            _facingDirection = _movementDirection;
+        _currentState = state;
     }
 
-    public Vector3 GetDirection()
+    internal MovementState GetState()
     {
-        return _movementDirection;
-    }
-
-    public Vector3 GetFacingDirection()
-    {
-        return _facingDirection;
-    }
-
-    public bool IsMoving()
-    {
-        return _movementDirection != Vector3.zero;
-    }
-
-    public bool IsFrozen()
-    {
-        return _isFrozen;
-    }
-
-    public void SetFrozen(bool isFrozen)
-    {
-        _isFrozen = isFrozen;
-    }
-
-    public bool CanAttack()
-    {
-        if (_isAttacking || IsMoving())
-            return false;
-        return true; ;
-    }
-
-    public void DoAttack()
-    {
-        
-    }
-
-    public void OnAttackStart()
-    {
-        _isAttacking = true;
-    }
-
-    public void OnAttackStop()
-    {
-        _isAttacking = false;
+        return _currentState;
     }
 }

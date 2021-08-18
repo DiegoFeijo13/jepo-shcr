@@ -40,7 +40,7 @@ public class DialogBox : MonoBehaviour
 
     void DoShow(string displayText)
     {
-        CharacterMovementModel.SetFrozen(true);
+        CharacterMovementModel.SetState(MovementState.frozen);
         StartCoroutine(FreezeTimeCo());
         _image.enabled = true;
         _textBox.enabled = true;
@@ -49,7 +49,7 @@ public class DialogBox : MonoBehaviour
 
     void DoHide()
     {
-        CharacterMovementModel.SetFrozen(false);
+        CharacterMovementModel.SetState(MovementState.idle);
         Time.timeScale = 1f;        
 
         _image.enabled = false;

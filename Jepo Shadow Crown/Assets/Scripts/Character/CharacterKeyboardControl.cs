@@ -16,6 +16,7 @@ public class CharacterKeyboardControl : CharacterBaseControl
         UpdateDirection();
         UpdateAction();
         UpdateAttack();
+        UpdateSecondAttack();
     }
 
     void UpdateAttack()
@@ -25,6 +26,14 @@ public class CharacterKeyboardControl : CharacterBaseControl
             OnAttackPressed();
         }
 
+    }
+
+    void UpdateSecondAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            OnSecondAttackPressed();
+        }
     }
 
     void UpdateAction()

@@ -6,27 +6,24 @@ public class CharacterAnimationListener : MonoBehaviour
 {
     public CharacterMovementModel MovementModel;
     public CharacterMovementView MovementView;
-
-    // Start is called before the first frame update
-    public void OnAttackStart()
-    {
-        Debug.Log("Attack start");
-        if (MovementModel != null)        
-            MovementModel.OnAttackStart();
+    
+    //public void OnAttackStart()
+    //{
+    //    if (MovementModel != null)        
+    //        MovementModel.OnAttackStart();
 
 
-        if (MovementView != null)
-            MovementView.OnAttackStart();
-    }
+    //    if (MovementView != null)
+    //        MovementView.OnAttackStart();
+    //}
 
-    public void OnAttackStop()
-    {
-        Debug.Log("Attack stop");
-        if (MovementModel != null)
-            MovementModel.OnAttackStop();
+    //public void OnAttackStop()
+    //{     
+    //    if (MovementModel != null)
+    //        MovementModel.OnAttackStop();
 
 
-        if (MovementView != null)
-            MovementView.OnAttackStop();
-    }
+    //    if (MovementView != null)
+    //        MovementView.OnAttackStop();
+    //}
 }
