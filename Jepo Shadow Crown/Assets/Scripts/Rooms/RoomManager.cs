@@ -67,14 +67,11 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator LoadRoomCo(RoomData room)
     {
-        string sceneName = _currentMap + room.Name;
-        Debug.Log($"Scene to load: {sceneName}");
+        string sceneName = _currentMap + room.Name;        
         AsyncOperation loadScene =  SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         while (!loadScene.isDone)
         {
-            Debug.Log($"Loading scene: {sceneName} {Mathf.Round(loadScene.progress) * 100}%");
-
             yield return null;
         }
     }

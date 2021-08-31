@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyCharacterCollision : MonoBehaviour
 {
-    CharacterBatControl _batControl;
+    SkeletonControll _skeletonControl;
 
     private void Awake()
     {
-        _batControl = GetComponentInParent<CharacterBatControl>();
+        _skeletonControl = GetComponentInParent<SkeletonControll>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
-            _batControl.OnHitCharacter(collider.gameObject);
+            _skeletonControl.OnHitCharacter(collider.gameObject);
         }
     }
 }

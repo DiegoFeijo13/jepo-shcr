@@ -13,6 +13,7 @@ public class AttackableEnemy : AttackableBase
     public float DestroyDelayOnDeath;
     public GameObject DeathFX;
     public float DelayDeathFX;
+    public float DamagePerHit;
 
     private int _health;
 

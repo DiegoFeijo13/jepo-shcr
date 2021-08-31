@@ -8,4 +8,5 @@ public class Character : MonoBehaviour
     public CharacterInteractionModel Interaction;
     public CharacterInventoryModel Inventory;
     public CharacterMovementView MovementView;
+    public PlayerHealth Health;
 }
