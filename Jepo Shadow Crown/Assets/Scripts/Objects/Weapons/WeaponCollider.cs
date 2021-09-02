@@ -18,7 +18,7 @@ public class WeaponCollider : MonoBehaviour
 
         if (attackable != null)
         {
-            attackable.OnHit(_collider, Type);
+            attackable.OnHit(_collider.gameObject.transform.position, Type, 1f);
         }
     }
 }

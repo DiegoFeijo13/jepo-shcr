@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogBox : MonoBehaviour
 {
-    public CharacterMovementModel CharacterMovementModel;
+    public PlayerControl playerControl;
 
     static DialogBox Instance;
 
@@ -40,7 +40,7 @@ public class DialogBox : MonoBehaviour
 
     void DoShow(string displayText)
     {
-        CharacterMovementModel.SetState(MovementState.frozen);
+        playerControl.CurrentState = MovementState.frozen;
         StartCoroutine(FreezeTimeCo());
         _image.enabled = true;
         _textBox.enabled = true;
@@ -49,7 +49,7 @@ public class DialogBox : MonoBehaviour
 
     void DoHide()
     {
-        CharacterMovementModel.SetState(MovementState.idle);
+        playerControl.CurrentState = MovementState.idle;
         Time.timeScale = 1f;        
 
         _image.enabled = false;

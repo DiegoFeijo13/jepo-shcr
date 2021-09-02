@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 9108196645631258011}
   - component: {fileID: 580674245966504951}
   - component: {fileID: 8701007154082387847}
-  - component: {fileID: 5504018618132292787}
-  - component: {fileID: 9108196645631258014}
+  - component: {fileID: 5016819981935838211}
   - component: {fileID: 9108196645631258013}
   - component: {fileID: 2488960124824205763}
   m_Layer: 0
@@ -36,7 +35,6 @@ Transform:
   - {fileID: 9108196647046866999}
   - {fileID: 9108196647179465734}
   - {fileID: 9108196645653207644}
-  - {fileID: 9108196646832211086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 9108196647046866984}
   BaseMovementModel: {fileID: 580674245966504951}
---- !u!114 &5504018618132292787
+--- !u!114 &5016819981935838211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,26 +74,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 9108196645631258010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ded796a39fc9d4589281c952931d2e, type: 3}
+  m_Script: {fileID: 11500000, guid: e78ac8a3c04e9c04dbc4e04268c80228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushStrength: 1
-  PushTime: 1.5
-  AttackableEnemy: {fileID: 9108196646832211072}
+  MaxHealth: 2
+  DestroyObjectOnDeath: {fileID: 9108196645631258010}
+  HitPushStrength: 0.5
+  HitPushDuration: 0.2
+  DestroyDelayOnDeath: 0
+  DeathFX: {fileID: 0}
+  DelayDeathFX: 0
+  DamagePerHit: 0
+  PushStrength: 0.5
+  PushTime: 0.2
   _minWaitTime: 0.1
   _maxWaitTime: 0.75
---- !u!114 &9108196645631258014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196645631258010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8884ebcf408e645a3fde507069cc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &9108196645631258013
 Rigidbody2D:
   serializedVersion: 4
@@ -153,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9108196645653207644}
   - component: {fileID: 9108196645653207646}
+  - component: {fileID: 3341226500950317106}
   - component: {fileID: 9108196645653207645}
   m_Layer: 0
   m_Name: CollisionTrigger
@@ -187,6 +181,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47235c03262ced64d9145bf1ac275ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3341226500950317106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108196645653207643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb930b41bd725cf4c8325db167993040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 4
+  knockTime: 0.2
 --- !u!58 &9108196645653207645
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -202,76 +210,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!1 &9108196646832211085
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9108196646832211086}
-  - component: {fileID: 9108196646832211072}
-  - component: {fileID: 9108196646832211087}
-  m_Layer: 0
-  m_Name: HitCollision
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9108196646832211086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196646832211085}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 9108196645631258011}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9108196646832211072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196646832211085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991336f3703c88249919e13fd8b84904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 2
-  DestroyObjectOnDeath: {fileID: 9108196645631258010}
-  MovementModel: {fileID: 580674245966504951}
-  HitPushStrength: 15
-  HitPushDuration: 0.2
-  DestroyDelayOnDeath: 0.6
-  DeathFX: {fileID: 0}
-  DelayDeathFX: 0.2
-  DamagePerHit: 1
---- !u!58 &9108196646832211087
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196646832211085}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!1 &9108196647046866998
 GameObject:
   m_ObjectHideFlags: 0

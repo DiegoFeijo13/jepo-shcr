@@ -33,14 +33,4 @@ public class BaseMovementView : MonoBehaviour
         Animator.SetTrigger("doAttack");
     }
 
-    public void OnAttackStart()
-    {
-        
-    }
-
-    public void OnAttackStop()
-    {   
-        
-    }
-
 }

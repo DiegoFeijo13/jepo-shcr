@@ -1,5 +1,6 @@
 ﻿public enum ItemType
 {
     Sword,
-    Shield
+    Shield,
+    Bullet
 }

@@ -8,4 +8,9 @@ public class AttackableBase : MonoBehaviour
     {
         Debug.LogWarning("No OnHit method setup for" + gameObject.name, gameObject);
     }
+
+    public virtual void OnHit(Vector2 pushDirection, ItemType itemType, float damage)
+    {
+        Debug.LogWarning("No OnHit method setup for" + gameObject.name, gameObject);
+    }
 }

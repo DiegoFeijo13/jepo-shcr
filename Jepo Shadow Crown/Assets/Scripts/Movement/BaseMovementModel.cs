@@ -8,24 +8,27 @@ public enum MovementState
     walking,
     interacting,
     attacking,
-    frozen
+    frozen,
+    staggering,
 }
 
 public class BaseMovementModel : MonoBehaviour
 {
-    public float Speed;    
+    public float Speed;
 
     protected Vector3 _movementDirection;
     protected Vector3 _facingDirection;
 
     protected Rigidbody2D _body;
 
-    protected MovementState _currentState;
 
     protected Vector2 _pushDirection;
     protected float _pushTime;
 
-    private void Awake()
+    [HideInInspector]
+    public MovementState CurrentState { get; set; }
+
+    private void Start()
     {
         _body = GetComponent<Rigidbody2D>();
     }
@@ -42,7 +45,7 @@ public class BaseMovementModel : MonoBehaviour
 
     protected virtual void UpdateMovement()
     {
-        if (_currentState == MovementState.frozen || _currentState == MovementState.attacking)
+        if (CurrentState == MovementState.frozen || CurrentState == MovementState.attacking)
         {
             _body.velocity = Vector2.zero;
             return;
@@ -51,11 +54,11 @@ public class BaseMovementModel : MonoBehaviour
         if (_movementDirection != Vector3.zero)
         {
             _movementDirection.Normalize();
-            _currentState = MovementState.walking;
+            CurrentState = MovementState.walking;
         }
-        else if (_currentState == MovementState.walking)
+        else if (CurrentState == MovementState.walking)
         {
-            _currentState = MovementState.idle;
+            CurrentState = MovementState.idle;
         }
 
         if (IsBeingPushed())
@@ -80,7 +83,7 @@ public class BaseMovementModel : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        if (_currentState == MovementState.frozen || _currentState == MovementState.attacking)
+        if (CurrentState == MovementState.frozen || CurrentState == MovementState.attacking)
             return;
 
         _movementDirection = new Vector3(direction.x, direction.y, 0);
@@ -105,15 +108,15 @@ public class BaseMovementModel : MonoBehaviour
 
     public bool IsFrozen()
     {
-        return _currentState == MovementState.frozen;
+        return CurrentState == MovementState.frozen;
     }
 
     public void SetFrozen(bool isFrozen, bool affectGameTime)
     {
         if (isFrozen)
-            _currentState = MovementState.frozen;
+            CurrentState = MovementState.frozen;
         else
-            _currentState = MovementState.idle;        
+            CurrentState = MovementState.idle;
 
         if (affectGameTime)
         {
@@ -141,16 +144,30 @@ public class BaseMovementModel : MonoBehaviour
         List<MovementState> blockedStates = new List<MovementState>
         {
             MovementState.attacking,
-            MovementState.frozen,
-            MovementState.walking
+            MovementState.frozen
         };
 
-        return !blockedStates.Contains(_currentState);
+        return !blockedStates.Contains(CurrentState);
     }
 
     public void PushCharacter(Vector2 pushDirection, float time)
     {
         _pushDirection = pushDirection;
         _pushTime = time;
+    }
+
+    public void Knock(float knockTime)
+    {
+        StartCoroutine(KnockCo(knockTime));
+    }
+
+    private IEnumerator KnockCo(float knockTime)
+    {
+        if (_body != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            _body.velocity = Vector2.zero;
+            CurrentState = MovementState.idle;            
+        }
     }
 }

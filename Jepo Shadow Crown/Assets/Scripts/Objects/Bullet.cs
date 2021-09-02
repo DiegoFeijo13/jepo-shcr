@@ -9,8 +9,7 @@ namespace Assets.Scripts.Objects
 {
     public class Bullet : MonoBehaviour
     {
-        public float speed;
-        public Rigidbody2D myRigidbody;
+        public float damage = 1f;
         public float lifetime;        
 
         private float lifetimeCounter;
@@ -29,23 +28,24 @@ namespace Assets.Scripts.Objects
             }
         }
 
-        public void Setup(Vector2 velocity, Vector3 direction)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            myRigidbody.velocity = velocity.normalized * speed;
-            transform.rotation = Quaternion.Euler(direction);
-        }
-
-        public void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy"))
             {
+                var enemyBase = collision.gameObject.GetComponent<EnemyBase>();                
+                if (enemyBase != null)
+                {
+                    enemyBase.OnHit(gameObject.transform.position, ItemType.Bullet, damage);
+                }
+
                 Destroy(this.gameObject);
             }
 
-            if (other.gameObject.CompareTag("Walls"))
+            if (collision.gameObject.CompareTag("Walls"))
             {
                 Destroy(this.gameObject);
             }
         }
+        
     }
 }

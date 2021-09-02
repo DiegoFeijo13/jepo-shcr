@@ -758,6 +758,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789296663}
   m_CullTransparentMesh: 0
+--- !u!50 &795881194 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2129798316912015804, guid: 06d5c07b2c38f8449b2e22607c30282c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2129798316597547342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878374492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1089,7 @@ GameObject:
   - component: {fileID: 1611654231}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1467,6 +1473,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 3273523197495535604, guid: 06d5c07b2c38f8449b2e22607c30282c,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 795881194}
+    - target: {fileID: 3273523197495535604, guid: 06d5c07b2c38f8449b2e22607c30282c,
+        type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2846693732924305226, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}
+    - {fileID: 2129798316912015798, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}

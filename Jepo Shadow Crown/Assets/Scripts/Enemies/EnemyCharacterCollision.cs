@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyCharacterCollision : MonoBehaviour
 {
-    SkeletonControll _skeletonControl;
+    SkeletonControl _skeletonControl;
 
     private void Awake()
     {
-        _skeletonControl = GetComponentInParent<SkeletonControll>();
+        _skeletonControl = GetComponentInParent<SkeletonControl>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

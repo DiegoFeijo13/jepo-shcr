@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SkeletonProximityTrigger : MonoBehaviour
 {
-    SkeletonControll _control;
+    SkeletonControl _control;
 
     private void Awake()
     {
-        _control = GetComponentInParent<SkeletonControll>();
+        _control = GetComponentInParent<SkeletonControl>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 229665264}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1306,29 +1306,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1077647444}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1077647446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9108196645631258010, guid: 663d6d284798b2a4a875b3da0a994a4e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1077647444}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1077647447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077647446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ded796a39fc9d4589281c952931d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PushStrength: 0
-  PushTime: 0
-  AttackableEnemy: {fileID: 0}
-  _minWaitTime: 0.1
-  _maxWaitTime: 0.75
 --- !u!1 &1406543306
 GameObject:
   m_ObjectHideFlags: 0
