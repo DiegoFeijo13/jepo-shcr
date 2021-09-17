@@ -78,15 +78,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 2
-  DestroyObjectOnDeath: {fileID: 9108196645631258010}
+  MainObject: {fileID: 9108196645631258010}
   HitPushStrength: 0.5
   HitPushDuration: 0.2
   DestroyDelayOnDeath: 0
   DeathFX: {fileID: 0}
   DelayDeathFX: 0
   DamagePerHit: 0
-  PushStrength: 0.5
-  PushTime: 0.2
   _minWaitTime: 0.1
   _maxWaitTime: 0.75
 --- !u!50 &9108196645631258013
@@ -163,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9108196645653207643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.022, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9108196645631258011}
@@ -194,7 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 4
-  knockTime: 0.2
+  knockTime: 0.3
+  knockBackOn: Player
 --- !u!58 &9108196645653207645
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -279,7 +278,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -74090817
+  m_SortingLayerID: -1868061083
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 2810661859531828745, guid: 6f20f06048bac734e9a5a552df9d9e1b,

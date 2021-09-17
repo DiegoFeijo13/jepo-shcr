@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBase : AttackableBase
 {
     public int MaxHealth;
-    public GameObject DestroyObjectOnDeath;    
+    public GameObject MainObject;
     public float HitPushStrength;
     public float HitPushDuration;
     public float DestroyDelayOnDeath;
@@ -15,16 +15,33 @@ public class EnemyBase : AttackableBase
 
     protected float _health;
 
-    protected BaseMovementModel _movementModel;  
-    
+    protected BaseMovementModel _movementModel;
+
+    protected Vector3 _startPos;
+
     [HideInInspector]
     public MovementState CurrentState { get; set; }
 
     private void Awake()
     {
-        _movementModel = GetComponent<BaseMovementModel>();                
+        _movementModel = GetComponent<BaseMovementModel>();
         CurrentState = MovementState.idle;
         _health = MaxHealth;
+        if (MainObject != null)
+        {
+            _startPos = MainObject.transform.position;
+        }
+    }
+
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    {
+        if (myRigidbody != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            myRigidbody.velocity = Vector2.zero;
+            CurrentState = MovementState.idle;
+            myRigidbody.velocity = Vector2.zero;
+        }
     }
 
     protected void SetDirection(Vector2 direction)
@@ -43,7 +60,7 @@ public class EnemyBase : AttackableBase
         {
             pushDirection = pushDirection.normalized * HitPushStrength;
 
-            _movementModel.PushCharacter(pushDirection, HitPushDuration);
+            //_movementModel.PushCharacter(pushDirection, HitPushDuration);
         }
 
         if (_health <= 0)
@@ -61,7 +78,7 @@ public class EnemyBase : AttackableBase
     {
         yield return new WaitForSeconds(delay);
 
-        Destroy(DestroyObjectOnDeath);
+        MainObject.SetActive(false);
 
         BroadcastMessage("OnLootDrop", SendMessageOptions.DontRequireReceiver);
     }
@@ -76,17 +93,14 @@ public class EnemyBase : AttackableBase
     public void Knock(Rigidbody2D myRigidbody, float knockTime)
     {
         StartCoroutine(KnockCo(myRigidbody, knockTime));
-        
+
     }
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    public void FullRestore()
     {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            CurrentState = MovementState.idle;
-            myRigidbody.velocity = Vector2.zero;
-        }
+        MainObject.SetActive(true);
+        MainObject.transform.position = _startPos;
+        _health = MaxHealth;
+        CurrentState = MovementState.idle;
     }
 }

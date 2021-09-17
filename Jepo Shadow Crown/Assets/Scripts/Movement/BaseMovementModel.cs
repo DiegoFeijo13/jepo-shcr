@@ -21,21 +21,12 @@ public class BaseMovementModel : MonoBehaviour
 
     protected Rigidbody2D _body;
 
-
-    protected Vector2 _pushDirection;
-    protected float _pushTime;
-
     [HideInInspector]
     public MovementState CurrentState { get; set; }
 
     private void Start()
     {
         _body = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
-    {
-        UpdatePushTime();
     }
 
     void FixedUpdate()
@@ -45,40 +36,32 @@ public class BaseMovementModel : MonoBehaviour
 
     protected virtual void UpdateMovement()
     {
-        if (CurrentState == MovementState.frozen || CurrentState == MovementState.attacking)
+        if (CurrentState == MovementState.frozen)
         {
+            Debug.Log(CurrentState);
             _body.velocity = Vector2.zero;
             return;
         }
 
-        if (_movementDirection != Vector3.zero)
+        if (_movementDirection != Vector3.zero && CurrentState != MovementState.staggering)
         {
             _movementDirection.Normalize();
             CurrentState = MovementState.walking;
         }
-        else if (CurrentState == MovementState.walking)
+        
+        if (_movementDirection == Vector3.zero)
         {
             CurrentState = MovementState.idle;
         }
 
-        if (IsBeingPushed())
-        {
-            _body.velocity = _pushDirection;
+        if (CurrentState == MovementState.walking)
+        { 
+            _body.velocity = _movementDirection * Speed;
         }
         else
         {
-            _body.velocity = _movementDirection * Speed;
+            _body.velocity = Vector2.zero;
         }
-    }
-
-    protected void UpdatePushTime()
-    {
-        _pushTime = Mathf.MoveTowards(_pushTime, 0f, Time.deltaTime);
-    }
-
-    protected bool IsBeingPushed()
-    {
-        return _pushTime > 0;
     }
 
     public void SetDirection(Vector2 direction)
@@ -148,26 +131,5 @@ public class BaseMovementModel : MonoBehaviour
         };
 
         return !blockedStates.Contains(CurrentState);
-    }
-
-    public void PushCharacter(Vector2 pushDirection, float time)
-    {
-        _pushDirection = pushDirection;
-        _pushTime = time;
-    }
-
-    public void Knock(float knockTime)
-    {
-        StartCoroutine(KnockCo(knockTime));
-    }
-
-    private IEnumerator KnockCo(float knockTime)
-    {
-        if (_body != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            _body.velocity = Vector2.zero;
-            CurrentState = MovementState.idle;            
-        }
     }
 }

@@ -5,30 +5,37 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     public float thrust;
-    public float knockTime;    
+    public float knockTime;
+    public string knockBackOn = "Player";
+
+    private Rigidbody2D _body;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(knockBackOn))
         {
-            Debug.Log("Knockback", other);
-
-            Rigidbody2D hit = other.GetComponent<Rigidbody2D>();
-            if (hit != null)
+            _body = other.GetComponent<Rigidbody2D>();
+            BaseMovementModel baseMovementModel = other.gameObject.GetComponent<BaseMovementModel>();
+            if (_body != null && baseMovementModel != null)
             {
-                Vector2 difference = hit.transform.position - transform.position;
+                Vector2 difference = _body.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                hit.AddForce(difference, ForceMode2D.Impulse);
+                _body.AddForce(difference, ForceMode2D.Impulse);
 
-                BaseMovementModel baseMovementModel = other.gameObject.GetComponent<BaseMovementModel>();
-
-                Debug.Log("BaseMovementModel", baseMovementModel);
-                if (baseMovementModel != null)
-                {
-                    baseMovementModel.CurrentState = MovementState.staggering;
-                    baseMovementModel.Knock(knockTime);
-                }
+                baseMovementModel.CurrentState = MovementState.staggering;
+                StartCoroutine(KnockCo(knockTime, baseMovementModel));
             }
+
+        }
+    }
+
+    private IEnumerator KnockCo(float knockTime, BaseMovementModel baseMovementModel)
+    {
+        if (_body != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            _body.velocity = Vector2.zero;
+            baseMovementModel.CurrentState = MovementState.idle;
         }
     }
 }

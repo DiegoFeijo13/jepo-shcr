@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SkeletonControl : EnemyBase
 {
-    public float PushStrength;
-    public float PushTime;
-
     GameObject _characterInRange;
 
     private Vector2 _directionVector;    
@@ -113,7 +110,6 @@ public class SkeletonControl : EnemyBase
 
         _characterInRange = null;
         
-        character.GetComponent<PlayerControl>().PushCharacter(direction * PushStrength, PushTime);
         character.GetComponent<Character>().Health.DealDamage(DamagePerHit);
 
         CurrentState = MovementState.idle;

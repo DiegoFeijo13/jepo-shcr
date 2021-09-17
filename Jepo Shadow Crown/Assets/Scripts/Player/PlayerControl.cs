@@ -21,7 +21,6 @@ public class PlayerControl : BaseMovementModel
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");        
 
-        UpdatePushTime();
         UpdateAction();
     }
 
@@ -32,7 +31,8 @@ public class PlayerControl : BaseMovementModel
         else                   
             SetDirection(_movement);
 
-        UpdateMovement();
+        if(CurrentState != MovementState.staggering)
+            UpdateMovement();
     }
 
     void UpdateAction()

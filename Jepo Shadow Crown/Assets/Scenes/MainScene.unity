@@ -758,12 +758,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789296663}
   m_CullTransparentMesh: 0
---- !u!50 &795881194 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 2129798316912015804, guid: 06d5c07b2c38f8449b2e22607c30282c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2129798316597547342}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878374492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,28 +1456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2129798316912015799, guid: 06d5c07b2c38f8449b2e22607c30282c,
-        type: 3}
-      propertyPath: Health
-      value: 
-      objectReference: {fileID: 11400000, guid: 2d12d50a468bd6a45bf9f497eae2e823,
-        type: 2}
     - target: {fileID: 2129798316912015807, guid: 06d5c07b2c38f8449b2e22607c30282c,
         type: 3}
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 3273523197495535604, guid: 06d5c07b2c38f8449b2e22607c30282c,
-        type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 795881194}
-    - target: {fileID: 3273523197495535604, guid: 06d5c07b2c38f8449b2e22607c30282c,
-        type: 3}
-      propertyPath: Speed
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2846693732924305226, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}
-    - {fileID: 2129798316912015798, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06d5c07b2c38f8449b2e22607c30282c, type: 3}

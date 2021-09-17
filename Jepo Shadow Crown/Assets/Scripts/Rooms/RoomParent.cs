@@ -13,6 +13,8 @@ public class RoomParent : MonoBehaviour
     public string DownExit;
     public string RightExit;
 
+    public EnemyBase[] Enemies;
+
     private void Start()
     {
         if(RoomManager.Instance == null)
@@ -43,7 +45,24 @@ public class RoomParent : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            var playerControl = collider.gameObject.GetComponent<PlayerControl>();
+            playerControl.SetFrozen(true, false);
             RoomManager.Instance.OnPlayerEnterRoom(this);
+            //Espera 1s
+            new WaitForSeconds(1);
+            //
+            playerControl.SetFrozen(false, false);
+        }
+    }
+
+    public void ActivateRoom()
+    {
+        if(Enemies != null && Enemies.Length > 0)
+        {
+            foreach (var enemy in Enemies)
+            {
+                enemy.FullRestore();
+            }
         }
     }
 }

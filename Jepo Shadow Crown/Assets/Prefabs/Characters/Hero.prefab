@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -74090817
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: de84a55bfe6665f4ebac6e0fc19c6044, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,9 +151,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -74090817
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9214166400764900579, guid: 803f704cfefb4654fb69eb2f8dc42361,
+  m_Sprite: {fileID: -8496680383233536016, guid: bfcfe7e303883f542914be2093387ae7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -311,11 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aded2f4270938f44e8e9b7001ca8c62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerControl: {fileID: 0}
+  PlayerControl: {fileID: 3273523197495535604}
   Interaction: {fileID: 0}
   Inventory: {fileID: 2129798316912015802}
-  PlayerView: {fileID: 0}
-  Health: {fileID: 0}
+  PlayerView: {fileID: 5348253394863136224}
+  Health: {fileID: 11400000, guid: 2d12d50a468bd6a45bf9f497eae2e823, type: 2}
 --- !u!114 &3273523197495535604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8a7ad15e382334d992e7d1724af3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 3.5
 --- !u!114 &5348253394863136224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0026495159, y: -0.2797333}
+  m_Offset: {x: -0.00055098534, y: -0.25413132}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -400,7 +400,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6217231, y: 0.31859803}
+  m_Size: {x: 0.44891024, y: 0.59381866}
   m_EdgeRadius: 0
 --- !u!50 &2129798316912015804
 Rigidbody2D:
