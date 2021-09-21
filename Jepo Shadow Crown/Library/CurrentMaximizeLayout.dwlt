@@ -139,8 +139,8 @@ MonoBehaviour:
     y: 0
     width: 1140
     height: 947
-  m_MinSize: {x: 101, y: 242}
-  m_MaxSize: {x: 4001, y: 8042}
+  m_MinSize: {x: 101, y: 221}
+  m_MaxSize: {x: 4001, y: 8021}
   vertical: 1
   controlID: -1
 --- !u!114 &4
@@ -200,16 +200,16 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: c51f1bb896ca00d4a9d337724bd9bd22
   m_Gizmos: 1
-  m_SceneIsLit: 1
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.8532931, y: -2.1318922, z: -36.540882}
+    m_Target: {x: 3.630802, y: -11.2544365, z: -0.12771872}
     speed: 2
-    m_Value: {x: 0.8532931, y: -2.1318922, z: -36.540882}
+    m_Value: {x: 3.630802, y: -11.2544365, z: -0.12771872}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -259,9 +259,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.735321
+    m_Target: 0.8528634
     speed: 2
-    m_Value: 12.735321
+    m_Value: 0.8528634
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -457,8 +457,8 @@ MonoBehaviour:
     y: 602
     width: 1140
     height: 345
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 27110
+  m_LastSelectedObjectID: 20706
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 392}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 4918
+  controlID: 124
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -600,9 +600,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 8e3e0000
       m_LastClickedID: 0
-      m_ExpandedIDs: d4c2ffff8ecbffff98cbffffe0cbffff82d6ffffc0dbffff60fbffff8a390000a43900003e5b0000465b0000ca5d0000d25d000080640000f4640000fc640000
+      m_ExpandedIDs: 30f9ffffe2500000e4500000f2500000f6500000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -691,21 +691,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Characters/Enemies
+    - Assets/Art/Characters
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/Characters/Enemies
+  - Assets/Art/Characters
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Diego\Documents\Projects\Unity\jepo-shcr\Jepo Shadow
     Crown
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 214}
-    m_SelectedIDs: 6e500000
-    m_LastClickedID: 20590
-    m_ExpandedIDs: 000000001c3e00001e3e0000203e0000223e0000243e0000263e0000283e0000483e00004a3e00006c5000007850000000ca9a3b
+    scrollPos: {x: 0, y: 3.9993896}
+    m_SelectedIDs: 1a3e0000
+    m_LastClickedID: 15898
+    m_ExpandedIDs: 00000000fc3d0000fe3d0000003e0000023e0000043e0000063e0000083e00002a3e0000463e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -733,7 +733,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c3e00001e3e0000203e0000223e0000243e0000263e0000283e000000ca9a3b
+    m_ExpandedIDs: 00000000fc3d0000fe3d0000003e0000023e0000043e0000063e0000083e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -758,24 +758,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 8e3e0000
+    m_LastClickedInstanceID: 16014
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000e4390000c83d00004a480000064c0000e43a000046540000843c00004a3b00002247000028490000923a000068690000b652000098bb0000d272000092750000d08600002c4200000000000042670000ec0001002a010100b459000070710000b4650000724800007a750000c6480000384d0000323a000058420000fa390000223a00000a42000002770000803900003e500000cc500000d0500000
+    m_ExpandedInstanceIDs: c6230000e4390000c83d00004a480000064c0000e43a000046540000843c00004a3b00002247000028490000923a000068690000b652000098bb0000d272000092750000d08600002c4200000000000042670000ec0001002a010100b459000070710000b4650000724800007a750000c6480000384d0000323a000058420000fa390000223a00000a42000002770000803900003e500000cc500000d05000007a3e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Level1Room00
-      m_OriginalName: Level1Room00
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 20604
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:

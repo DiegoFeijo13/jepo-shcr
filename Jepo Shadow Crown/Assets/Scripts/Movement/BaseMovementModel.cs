@@ -10,6 +10,7 @@ public enum MovementState
     attacking,
     frozen,
     staggering,
+    auto,
 }
 
 public class BaseMovementModel : MonoBehaviour
@@ -31,14 +32,14 @@ public class BaseMovementModel : MonoBehaviour
 
     void FixedUpdate()
     {
-        UpdateMovement();
+        if(CurrentState != MovementState.auto)
+            UpdateMovement();
     }
 
     protected virtual void UpdateMovement()
     {
         if (CurrentState == MovementState.frozen)
         {
-            Debug.Log(CurrentState);
             _body.velocity = Vector2.zero;
             return;
         }
@@ -131,5 +132,18 @@ public class BaseMovementModel : MonoBehaviour
         };
 
         return !blockedStates.Contains(CurrentState);
+    }
+
+    public void AutoMove(Vector2 dir, float seconds)
+    {
+        CurrentState = MovementState.auto;
+        _body.velocity = dir * Speed;
+        StartCoroutine(AutoMovementCO(seconds));
+    }
+
+    IEnumerator AutoMovementCO(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        CurrentState = MovementState.idle;
     }
 }

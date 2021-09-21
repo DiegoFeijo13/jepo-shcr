@@ -43,19 +43,25 @@ public class RoomParent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
             var playerControl = collider.gameObject.GetComponent<PlayerControl>();
-            playerControl.SetFrozen(true, false);
+            playerControl.AutoMove(playerControl.GetFacingDirection(),.3f);
             RoomManager.Instance.OnPlayerEnterRoom(this);
-            //Espera 1s
-            new WaitForSeconds(1);
-            //
-            playerControl.SetFrozen(false, false);
+            ActivateRoom();
+            
         }
     }
 
-    public void ActivateRoom()
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            DeactivateRoom();
+        }
+    }
+
+    private void ActivateRoom()
     {
         if(Enemies != null && Enemies.Length > 0)
         {
@@ -64,5 +70,17 @@ public class RoomParent : MonoBehaviour
                 enemy.FullRestore();
             }
         }
+    }
+
+    private void DeactivateRoom()
+    {
+        if (Enemies != null && Enemies.Length > 0)
+        {
+            foreach (var enemy in Enemies)
+            {
+                enemy.gameObject.SetActive(false);
+            }
+        }
+
     }
 }

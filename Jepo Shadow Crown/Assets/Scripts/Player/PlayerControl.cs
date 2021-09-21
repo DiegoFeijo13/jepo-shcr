@@ -31,7 +31,7 @@ public class PlayerControl : BaseMovementModel
         else                   
             SetDirection(_movement);
 
-        if(CurrentState != MovementState.staggering)
+        if(CurrentState != MovementState.staggering && CurrentState != MovementState.auto)
             UpdateMovement();
     }
 

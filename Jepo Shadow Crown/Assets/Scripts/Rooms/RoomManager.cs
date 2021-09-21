@@ -106,11 +106,7 @@ public class RoomManager : MonoBehaviour
     public void OnPlayerEnterRoom(RoomParent roomParent)
     {
         GameCamera.Instance.CurrentRoom = roomParent;
-
-        roomParent.ActivateRoom();
         LoadAllExits(roomParent);
-        
-
     }
 
     private void LoadAllExits(RoomParent roomParent)
