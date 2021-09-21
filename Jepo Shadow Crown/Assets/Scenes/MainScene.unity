@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentRoom: {fileID: 0}
-  MovementSpeedOnRoomChange: 30
+  MovementSpeedOnRoomChange: 60
 --- !u!1 &1649463262
 GameObject:
   m_ObjectHideFlags: 0

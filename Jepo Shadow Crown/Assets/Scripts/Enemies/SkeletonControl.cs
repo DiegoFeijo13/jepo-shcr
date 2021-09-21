@@ -5,8 +5,7 @@ using UnityEngine;
 public class SkeletonControl : EnemyBase
 {
     GameObject _characterInRange;
-
-    private Vector2 _directionVector;    
+     
     private float _moveTimeSeconds;
     private float _minMoveTime = 1f;
     private float _maxMoveTime = 1.75f;
@@ -60,40 +59,6 @@ public class SkeletonControl : EnemyBase
         }
 
         SetDirection(_directionVector);
-    }
-
-    void ChangeDirection()
-    {
-        int direction = Random.Range(0, 4);
-        switch (direction)
-        {
-            case 0:
-                _directionVector = Vector2.right;
-                break;
-            case 1:
-                _directionVector = Vector2.up;
-                break;
-            case 2:
-                _directionVector = Vector2.left;
-                break;
-            case 3:
-                _directionVector = Vector2.down;
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void ChooseDifferentDirection()
-    {
-        Vector2 temp = _directionVector;
-        ChangeDirection();
-        int loops = 0;
-        while (temp == _directionVector && loops < 100)
-        {
-            loops++;
-            ChangeDirection();
-        }
     }
 
     public void SetCharacterInRange(GameObject characterInRange)
