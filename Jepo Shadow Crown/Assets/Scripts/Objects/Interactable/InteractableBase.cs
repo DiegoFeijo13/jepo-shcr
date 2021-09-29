@@ -4,9 +4,25 @@ using UnityEngine;
 
 public class InteractableBase : MonoBehaviour
 {
-    public virtual void OnInteract()
+    public SignalSender Context;
+    protected bool PlayerInRange;
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnInteract not implemented");
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            //Context.Raise();
+            PlayerInRange = true;
+        }
+    }
+
+    public virtual void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            //Context.Raise();
+            PlayerInRange = false;
+        }
     }
 
 

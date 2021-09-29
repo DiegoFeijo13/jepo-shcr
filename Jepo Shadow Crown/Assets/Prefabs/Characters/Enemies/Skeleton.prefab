@@ -84,7 +84,8 @@ MonoBehaviour:
   DestroyDelayOnDeath: 0
   DeathFX: {fileID: 0}
   DelayDeathFX: 0
-  DamagePerHit: 0
+  DamagePerHit: 1
+  Bounds: {fileID: 0}
   _minWaitTime: 0.1
   _maxWaitTime: 0.75
 --- !u!50 &9108196645631258013

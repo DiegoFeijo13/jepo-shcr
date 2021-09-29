@@ -14,6 +14,7 @@ public class RoomParent : MonoBehaviour
     public string RightExit;
 
     public EnemyBase[] Enemies;
+    public InteractableDoor[] Doors;
 
     private void Start()
     {
@@ -68,6 +69,17 @@ public class RoomParent : MonoBehaviour
             foreach (var enemy in Enemies)
             {
                 enemy.FullRestore();
+            }
+        }
+
+        if(Doors != null && Doors.Length > 0)
+        {
+            foreach (var door in Doors)
+            {
+                if(door.ThisDoorType != DoorType.key)
+                {
+                    door.Close();
+                }
             }
         }
     }
