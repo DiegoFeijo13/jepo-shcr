@@ -11,7 +11,7 @@ public class InteractableBase : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            //Context.Raise();
+            Context.Raise();
             PlayerInRange = true;
         }
     }
@@ -20,7 +20,7 @@ public class InteractableBase : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            //Context.Raise();
+            Context.Raise();
             PlayerInRange = false;
         }
     }
