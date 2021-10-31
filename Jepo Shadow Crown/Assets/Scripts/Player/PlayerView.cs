@@ -32,9 +32,9 @@ public class PlayerView : BaseMovementView
 
     void UpdateDirection()
     {
-        Vector3 facingDirection = _movementModel.GetFacingDirection();
-        if ((facingDirection.x == 1 && !_isFacingRight) || (facingDirection.x == -1 && _isFacingRight))
-            Flip();
+        //Vector3 facingDirection = _movementModel.GetFacingDirection();
+        //if ((facingDirection.x == 1 && !_isFacingRight) || (facingDirection.x == -1 && _isFacingRight))
+        //    Flip();
 
         Vector3 direction = _movementModel.GetDirection();
 

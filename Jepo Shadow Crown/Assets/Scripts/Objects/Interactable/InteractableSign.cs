@@ -8,19 +8,20 @@ public class InteractableSign : InteractableBase
     public Dialog CurrentDialog;
     public string Dialog;
 
-    // Update is called once per frame
-    public virtual void Update()
+    private void Update()
     {
-        if (Input.GetButtonDown("Action") && PlayerInRange)
+        UpdateInteract();
+    }
+
+    public override void InteractInternal()
+    {
+        if (CurrentDialog.IsActive)
         {
-            if (CurrentDialog.IsActive)
-            {
-                CurrentDialog.Close();                
-            }
-            else
-            {
-                CurrentDialog.ShowText(Dialog);
-            }
+            CurrentDialog.Close();
+        }
+        else
+        {
+            CurrentDialog.ShowText(Dialog);
         }
     }
 

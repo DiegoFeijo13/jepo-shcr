@@ -45,7 +45,7 @@ namespace Assets.Scripts.Objects
                 Destroy(this.gameObject);
             }
 
-            if (collision.gameObject.CompareTag("Walls"))
+            if (collision.gameObject.CompareTag("Walls") || collision.gameObject.CompareTag("Objects"))
             {
                 Destroy(this.gameObject);
             }

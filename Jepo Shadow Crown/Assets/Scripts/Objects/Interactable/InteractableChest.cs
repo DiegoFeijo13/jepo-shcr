@@ -33,18 +33,20 @@ public class InteractableChest : InteractableBase
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Action") && PlayerInRange)
+        UpdateInteract();
+    }
+
+    public override void InteractInternal()
+    {
+        if (!IsOpen)
         {
-            if (!IsOpen)
-            {
-                //Open the chest
-                OpenChest();
-            }
-            else
-            {
-                //Chest is already open
-                ChestAlreadyOpen();
-            }
+            //Open the chest
+            OpenChest();
+        }
+        else
+        {
+            //Chest is already open
+            ChestAlreadyOpen();
         }
     }
 
@@ -60,8 +62,7 @@ public class InteractableChest : InteractableBase
         //Raise the signal to the player to animate
         //raiseItem.Raise();
         //Raise the context clue
-        //Context.Raise();
-        //Set the chest to opened
+        Context.Raise();        
         IsOpen = true;
         anim.SetBool("isOpen", true);
         //StoredOpen.RunTimeValue = IsOpen;

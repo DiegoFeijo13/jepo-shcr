@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -172,7 +172,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -741,6 +741,15 @@ Tilemap:
       m_TileColorIndex: 4
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: -4, y: 12, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 4
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 4
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: -3, y: 12, z: 0}
     second:
       serializedVersion: 2
@@ -814,7 +823,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 8cc8d99c51dab7243bcdc76aa5687339, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 42d1672c168ae2847a8303135779fcf5, type: 2}
-  - m_RefCount: 38
+  - m_RefCount: 39
     m_Data: {fileID: 11400000, guid: d159216a4e63aea4294502f2972d59df, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: aa24f8722b12eeb48832999bd1246533, type: 2}
@@ -835,14 +844,14 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 5514018207375583831, guid: 50484dbf640d5cf48ba8007cbe0883a4,
       type: 3}
-  - m_RefCount: 38
+  - m_RefCount: 39
     m_Data: {fileID: 7824862146521048163, guid: 50484dbf640d5cf48ba8007cbe0883a4,
       type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 6789314976683716757, guid: 50484dbf640d5cf48ba8007cbe0883a4,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 66
+  - m_RefCount: 67
     m_Data:
       e00: 1
       e01: 0
@@ -869,7 +878,7 @@ Tilemap:
     m_Data: {r: 8.474915, g: 8.474915, b: 8.474915, a: 8.474915}
   - m_RefCount: 0
     m_Data: {r: 4.5130005, g: 4.5130005, b: 4.5130005, a: 4.5130005}
-  - m_RefCount: 66
+  - m_RefCount: 67
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -978,7 +987,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1150,10 +1159,12 @@ MonoBehaviour:
   Height: 10
   X: 0
   Y: 0
-  UpExit: Room03
+  UpExit: 
   LeftExit: 
   DownExit: Start
   RightExit: 
+  Enemies: []
+  Doors: []
 --- !u!61 &1406543309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1260,7 +1271,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da585ca24331cb7449f565222c4a415b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
