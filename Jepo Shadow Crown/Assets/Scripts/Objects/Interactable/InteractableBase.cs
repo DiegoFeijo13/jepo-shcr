@@ -25,6 +25,17 @@ public class InteractableBase : MonoBehaviour
         }
     }
 
+    public void UpdateInteract()
+    {
+        if (Input.GetButtonDown("Action") && PlayerInRange)
+        {
+            InteractInternal();
+        }
+    }
 
+    public virtual void InteractInternal()
+    {
+        Debug.LogError("Not implemented!");
+    }
 
 }

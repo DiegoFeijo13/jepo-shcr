@@ -19,25 +19,44 @@ public class InteractableDoor : InteractableBase
 
     void Update()
     {
-        if (Input.GetButtonDown("Action") && PlayerInRange)
+        UpdateInteract();
+    }
+
+    public override void InteractInternal()
+    {
+        if (ThisDoorType == DoorType.key && PlayerInventory.Keys > 0)
         {
-            if(ThisDoorType == DoorType.key && PlayerInventory.Keys > 0)
-            {
-                PlayerInventory.Keys--;
-                Open();
-            }
+            PlayerInventory.Keys--;
+            Open();
         }
     }
 
     public void Open()
     {
         DoorVisuals.SetActive(false);     
-        IsOpen = true;                
+        IsOpen = true;
+        Context.Raise();
     }
 
     public void Close()
     {
         DoorVisuals.SetActive(true);
         IsOpen = false;        
+    }
+
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!IsOpen)
+        {
+            base.OnTriggerEnter2D(other);
+        }
+    }
+
+    public override void OnTriggerExit2D(Collider2D other)
+    {
+        if (!IsOpen)
+        {
+            base.OnTriggerExit2D(other);
+        }
     }
 }
