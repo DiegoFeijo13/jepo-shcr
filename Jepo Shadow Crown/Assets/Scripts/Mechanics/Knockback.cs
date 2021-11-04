@@ -1,41 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Knockback : MonoBehaviour
 {
-    public float thrust;
-    public float knockTime;
-    public string knockBackOn = "Player";
+    [SerializeField] private float thrust;
+    [SerializeField] private float knockTime;
+    [SerializeField] private string knockBackOnTag = "Player";
 
-    private Rigidbody2D _body;
+    private Rigidbody2D body;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(knockBackOn))
+        if (other.gameObject.CompareTag(knockBackOnTag) && other.isTrigger)
         {
-            _body = other.GetComponent<Rigidbody2D>();
-            BaseMovementModel baseMovementModel = other.gameObject.GetComponent<BaseMovementModel>();
-            if (_body != null && baseMovementModel != null)
+            body = other.GetComponent<Rigidbody2D>();
+            if (body != null)
             {
-                Vector2 difference = _body.transform.position - transform.position;
+                Vector3 difference = body.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                _body.AddForce(difference, ForceMode2D.Impulse);
 
-                baseMovementModel.CurrentState = MovementState.staggering;
-                StartCoroutine(KnockCo(knockTime, baseMovementModel));
+                body.DOMove(body.transform.position + difference, knockTime);
             }
-
-        }
-    }
-
-    private IEnumerator KnockCo(float knockTime, BaseMovementModel baseMovementModel)
-    {
-        if (_body != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            _body.velocity = Vector2.zero;
-            baseMovementModel.CurrentState = MovementState.idle;
         }
     }
 }

@@ -15,7 +15,7 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance;
 
-    string _currentMap = "Level1";
+    public string CurrentMap = "Level1";
     bool _isLoadingRoom = false;
 
     RoomData _currentLoadingRoom;
@@ -67,7 +67,7 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator LoadRoomCo(RoomData room)
     {
-        string sceneName = _currentMap + room.Name;        
+        string sceneName = CurrentMap + room.Name;        
         AsyncOperation loadScene =  SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         while (!loadScene.isDone)
@@ -85,7 +85,7 @@ public class RoomManager : MonoBehaviour
 
         roomParent.X = _currentLoadingRoom.X;
         roomParent.Y = _currentLoadingRoom.Y;
-        roomParent.name = _currentMap + "-" + _currentLoadingRoom.Name + " " + roomParent.X + ", " + roomParent.Y;
+        roomParent.name = CurrentMap + "-" + _currentLoadingRoom.Name + " " + roomParent.X + ", " + roomParent.Y;
         roomParent.transform.parent = transform;
 
         _isLoadingRoom = false;

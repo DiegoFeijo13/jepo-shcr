@@ -18,8 +18,6 @@ public class PlayerHealth : ScriptableObject
 
     public void DealDamage(float damage)
     {
-        Debug.Log("Damage:" + damage);
-
         if (Health <= 0)
             return;
 
@@ -27,8 +25,22 @@ public class PlayerHealth : ScriptableObject
 
         if (Health <= 0)
         {
-            Health = 0;
-            Debug.Log("Dead X_X");
+            Health = 0;            
+            //Raise death signal
         }
+    }
+
+    public void RestoreHealth(float amount)
+    {
+        if (amount <= 0)
+            return;
+
+        if (Health >= MaxHealth)
+            return;
+
+        Health += amount;
+
+        if (Health >= MaxHealth)
+            Health = MaxHealth;
     }
 }

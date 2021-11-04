@@ -5,13 +5,19 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class InteractableTorch : InteractableBase
 {  
-    public bool IsLit = false;
+    public bool IsLit;
     
     public GameObject LightEffect;
+
+    private void Awake()
+    {
+        LightEffect.SetActive(IsLit);
+    }
 
     void Update()
     {
         UpdateInteract();
+        
     }
 
     public override void InteractInternal()

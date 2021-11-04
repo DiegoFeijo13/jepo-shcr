@@ -4,64 +4,68 @@ using UnityEngine;
 
 public class EnemyBase : AttackableBase
 {
-    public int MaxHealth;
-    public GameObject MainObject;
-    public float HitPushStrength;
-    public float HitPushDuration;
-    public float DestroyDelayOnDeath;
-    public GameObject DeathFX;
-    public float DelayDeathFX;
-    public float DamagePerHit;
-    public BoxCollider2D Bounds;
+    [SerializeField] protected int MaxHealth;
+    [SerializeField] protected GameObject MainObject;
+    [SerializeField] protected float HitPushStrength;
+    [SerializeField] protected float HitPushDuration;
+    [SerializeField] protected float DestroyDelayOnDeath;
+    [SerializeField] protected GameObject DeathFX;
+    [SerializeField] protected float DelayDeathFX;
+    [SerializeField] protected float DamagePerHit;
+    [SerializeField] protected BoxCollider2D Bounds;
+    [SerializeField] protected LootTable LootTable;    
 
     protected float _health;
 
-    protected BaseMovementModel _movementModel;
-    protected Transform _transform;
+    protected EnemyMovement movement;    
 
-    protected Vector3 _startPos;
-    protected Vector2 _directionVector;
+    protected Vector3 startPos;
+    protected Vector2 directionVector;
 
-    [HideInInspector]
-    public MovementState CurrentState { get; set; }
+    protected SpriteRenderer _spriteRenderer;
+    protected Color _defaultColor;
+    
+    protected EnemyState CurrentState { get; set; }
 
     private void Awake()
     {
-        _movementModel = GetComponent<BaseMovementModel>();
-        _transform = GetComponent<Transform>();
+        movement = GetComponent<EnemyMovement>();        
 
-        CurrentState = MovementState.idle;
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (_spriteRenderer != null)
+            _defaultColor = _spriteRenderer.color;
+
+        CurrentState = EnemyState.idle;
         _health = MaxHealth;
         if (MainObject != null)
         {
-            _startPos = MainObject.transform.position;
+            startPos = MainObject.transform.position;
         }
     }
 
-
     protected void SetDirection(Vector2 direction)
     {
-        if (_movementModel == null)
+        if (movement == null)
             return;
+
         if (Bounds != null)
         {
-            Vector2 temp = (Vector2)_transform.position + direction * _movementModel.Speed * Time.deltaTime;
+            Vector2 temp = (Vector2)transform.position + movement.GetSpeed * Time.deltaTime * direction;
             if (!Bounds.bounds.Contains(temp))
             {
                 ChooseDifferentDirection();
                 return;
             }
-        }
-
-        _movementModel.SetDirection(direction);
+        }        
+        movement.SetDirection(direction);
     }
 
     protected void ChooseDifferentDirection()
     {
-        Vector2 temp = _directionVector;
+        Vector2 temp = directionVector;
         ChangeDirection();
         int loops = 0;
-        while (temp == _directionVector && loops < 100)
+        while (temp == directionVector && loops < 100)
         {
             loops++;
             ChangeDirection();
@@ -74,27 +78,42 @@ public class EnemyBase : AttackableBase
         switch (direction)
         {
             case 0:
-                _directionVector = Vector2.right;
+                directionVector = Vector2.right;
                 break;
             case 1:
-                _directionVector = Vector2.up;
+                directionVector = Vector2.up;
                 break;
             case 2:
-                _directionVector = Vector2.left;
+                directionVector = Vector2.left;
                 break;
             case 3:
-                _directionVector = Vector2.down;
+                directionVector = Vector2.down;
                 break;
             default:
                 break;
         }
     }
 
+    private void MakeLoot()
+    {
+        if (LootTable != null)
+        {
+            DroppableItem current = LootTable.LootItem();
+            if (current != null)
+            {
+                Instantiate(current.gameObject, base.transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    #region Public Methods
     public override void OnHit(Vector2 pushDirection, ItemType itemType, float damage)
     {
         _health -= damage;
 
-        if (_movementModel != null)
+        StartCoroutine(HitEffectCo(0.2f));
+
+        if (movement != null)
         {
             pushDirection = pushDirection.normalized * HitPushStrength;
 
@@ -103,55 +122,50 @@ public class EnemyBase : AttackableBase
 
         if (_health <= 0)
         {
-            StartCoroutine(DestroyCo(DestroyDelayOnDeath));
-
             if (DeathFX != null)
             {
                 StartCoroutine(DeathFXCo(DelayDeathFX));
             }
+
+            MakeLoot();
+
+            StartCoroutine(DestroyCo(DestroyDelayOnDeath));
         }
-    }
-
-    public void Knock(Rigidbody2D myRigidbody, float knockTime)
-    {
-        StartCoroutine(KnockCo(myRigidbody, knockTime));
-
     }
 
     public void FullRestore()
     {
         MainObject.SetActive(true);
-        MainObject.transform.position = _startPos;
+        MainObject.transform.position = startPos;
         _health = MaxHealth;
-        CurrentState = MovementState.idle;
+        CurrentState = EnemyState.idle;
     }
+    #endregion Public Methods
 
     #region Coroutines
-    IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
-    {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            CurrentState = MovementState.idle;
-            myRigidbody.velocity = Vector2.zero;
-        }
-    }
-
     IEnumerator DestroyCo(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        MainObject.SetActive(false);
-
-        BroadcastMessage("OnLootDrop", SendMessageOptions.DontRequireReceiver);
+        //MainObject.SetActive(false);
+        Destroy(MainObject);
     }
 
     IEnumerator DeathFXCo(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        Instantiate(DeathFX, transform.position, Quaternion.identity);
+        Instantiate(DeathFX, base.transform.position, Quaternion.identity);
+    }
+
+    IEnumerator HitEffectCo(float delay)
+    {
+        if (_spriteRenderer == null)
+            yield break;
+
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(delay);
+        _spriteRenderer.color = _defaultColor;
     }
     #endregion Coroutines
 }

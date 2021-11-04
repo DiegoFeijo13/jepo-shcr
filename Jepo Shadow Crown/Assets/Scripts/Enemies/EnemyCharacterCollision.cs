@@ -13,9 +13,9 @@ public class EnemyCharacterCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && collider.isTrigger)
         {
-            _skeletonControl.OnHitCharacter(collider.gameObject);
+            _skeletonControl.Attack(collider.gameObject);
         }
     }
 }

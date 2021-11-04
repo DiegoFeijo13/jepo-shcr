@@ -54,17 +54,19 @@ namespace Assets.Scripts.Objects
         private void Knock(Collider2D collision)
         {
             
-                var body = collision.GetComponent<Rigidbody2D>();
-                BaseMovementModel baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
-                if (body != null && baseMovementModel != null)
-                {
-                    Vector2 difference = body.transform.position - transform.position;
-                    difference = difference.normalized * thrust;
-                    body.AddForce(difference, ForceMode2D.Impulse);
+            var body = collision.GetComponent<Rigidbody2D>();
+            //BaseMovementModel baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
+            if (body != null 
+                //&& baseMovementModel != null
+                )
+            {
+                Vector2 difference = body.transform.position - transform.position;
+                difference = difference.normalized * thrust;
+                body.AddForce(difference, ForceMode2D.Impulse);
 
-                    baseMovementModel.CurrentState = MovementState.staggering;
-                    StartCoroutine(KnockCo(collision));
-                }
+                //baseMovementModel.CurrentState = MovementState.staggering;
+                StartCoroutine(KnockCo(collision));
+            }
 
             
         }
@@ -72,12 +74,12 @@ namespace Assets.Scripts.Objects
         private IEnumerator KnockCo(Collider2D collision)
         {
             var body = collision.gameObject.GetComponent<Rigidbody2D>();
-            var baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
+            //var baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
             if (body != null)
             {
                 yield return new WaitForSeconds(knockTime);
                 body.velocity = Vector2.zero;
-                baseMovementModel.CurrentState = MovementState.idle;
+                //baseMovementModel.CurrentState = MovementState.idle;
             }
         }
 

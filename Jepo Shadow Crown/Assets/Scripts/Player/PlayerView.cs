@@ -4,20 +4,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : BaseMovementView
+public class PlayerView : MonoBehaviour
 {    
-    public Transform WeaponParent;
-    public GameObject _visuals;
-    public GameObject Projectile;
+    [SerializeField] private GameObject visuals;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Collider2D triggerCollider;
 
-    private PlayerControl _movementModel;
-    private bool _isFacingRight = true;
+    [Header("IFrame")]
+    [SerializeField] private float flashDuration;
+    [SerializeField] private int numberOfFlashes;
+
+    private SpriteRenderer spriteRenderer;
+    private Color defaultcolor;
+    private PlayerMovement movementModel;
 
     private void Awake()
     {
-        _movementModel = GetComponent<PlayerControl>();        
+        movementModel = GetComponent<PlayerMovement>();
+        spriteRenderer = visuals.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            defaultcolor = spriteRenderer.color;
 
-        if (Animator == null)
+        if (animator == null)
         {
             Debug.LogError("Character Animator not setup!");
             enabled = false;
@@ -32,58 +40,37 @@ public class PlayerView : BaseMovementView
 
     void UpdateDirection()
     {
-        //Vector3 facingDirection = _movementModel.GetFacingDirection();
-        //if ((facingDirection.x == 1 && !_isFacingRight) || (facingDirection.x == -1 && _isFacingRight))
-        //    Flip();
-
-        Vector3 direction = _movementModel.GetDirection();
+        Vector3 direction = movementModel.GetDirection();
 
         if (direction != Vector3.zero)
         {
-            Animator.SetFloat("moveX", direction.x);
-            Animator.SetFloat("moveY", direction.y);
+            animator.SetFloat("moveX", direction.x);
+            animator.SetFloat("moveY", direction.y);
         }
 
-        Animator.SetBool("isMoving", _movementModel.IsMoving());
+        animator.SetBool("isMoving", movementModel.IsMoving());
     }
 
-    private void Flip()
+    public void TakeHit()
     {
-        _isFacingRight = !_isFacingRight;
-        Vector3 scale = _visuals.transform.localScale;
-        scale.x *= -1;
-        _visuals.transform.localScale = scale;
+        StartCoroutine(TakeHitCo());
     }
 
-    private IEnumerator AttackCo()
+
+    private IEnumerator TakeHitCo()
     {
-        _movementModel.CurrentState = MovementState.attacking;
-        //Animator.SetBool("isAttacking", true);
-        yield return null;
-        //MakeBullet();
-        //Animator.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(0.5f);
-        if (_movementModel.CurrentState != MovementState.interacting)
+        int temp = 0;
+        triggerCollider.enabled = false;
+
+        while (temp < numberOfFlashes)
         {
-            _movementModel.CurrentState = MovementState.idle;
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(flashDuration);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(flashDuration);
+            temp++;
         }
+        triggerCollider.enabled = true;
     }
-
-    public void DoSecondAttack()
-    {
-        StartCoroutine(SecondAttackCo());
-    }
-
-    private IEnumerator SecondAttackCo()
-    {
-        _movementModel.CurrentState = MovementState.attacking;
-        Animator.SetBool("isAttacking", true);
-        yield return null;
-        Animator.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(0.5f);
-        if (_movementModel.CurrentState != MovementState.interacting)
-        {
-            _movementModel.CurrentState = MovementState.idle;
-        }
-    }
+    
 }

@@ -24,18 +24,17 @@ public class InteractableDoor : InteractableBase
 
     public override void InteractInternal()
     {
-        if (ThisDoorType == DoorType.key && PlayerInventory.Keys > 0)
+        if (!IsOpen && ThisDoorType == DoorType.key && PlayerInventory.Keys > 0)
         {
             PlayerInventory.Keys--;
             Open();
         }
     }
 
-    public void Open()
+    private void Open()
     {
         DoorVisuals.SetActive(false);     
-        IsOpen = true;
-        Context.Raise();
+        IsOpen = true;        
     }
 
     public void Close()

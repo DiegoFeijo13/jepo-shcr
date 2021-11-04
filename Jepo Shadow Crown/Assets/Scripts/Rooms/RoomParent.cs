@@ -46,8 +46,8 @@ public class RoomParent : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            var playerControl = collider.gameObject.GetComponent<PlayerControl>();
-            playerControl.AutoMove(playerControl.GetFacingDirection(),.3f);
+            var playerMovement = collider.gameObject.GetComponent<PlayerMovement>();
+            playerMovement.AutoMove(playerMovement.GetFacingDirection(),.3f);
             RoomManager.Instance.OnPlayerEnterRoom(this);
             ActivateRoom();
             

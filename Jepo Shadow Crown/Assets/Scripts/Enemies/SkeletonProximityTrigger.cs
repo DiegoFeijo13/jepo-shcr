@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SkeletonProximityTrigger : MonoBehaviour
 {
-    SkeletonControl _control;
+    SkeletonControl control;
 
     private void Awake()
     {
-        _control = GetComponentInParent<SkeletonControl>();
+        control = GetComponentInParent<SkeletonControl>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
-    {        
-        if(collider.CompareTag("Player"))
+    {
+        if (collider.CompareTag("Player"))
         {
-            _control.SetCharacterInRange(collider.gameObject);
+            control.SetCharacterInRange(collider.gameObject);
         }
     }
 
@@ -23,7 +23,7 @@ public class SkeletonProximityTrigger : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            _control.SetCharacterInRange(null);
+            control.SetCharacterInRange(null);
         }
     }
 }

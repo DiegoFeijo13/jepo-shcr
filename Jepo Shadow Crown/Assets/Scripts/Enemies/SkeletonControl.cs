@@ -6,17 +6,18 @@ public class SkeletonControl : EnemyBase
 {
     GameObject _characterInRange;
      
-    private float _moveTimeSeconds;
-    private float _minMoveTime = 1f;
-    private float _maxMoveTime = 1.75f;
-    private float _waitTimeSeconds;
-    public float _minWaitTime = 0.1f;
-    public float _maxWaitTime = 0.75f;
+    [SerializeField] private float minWaitTime = 0.1f;
+    [SerializeField] private float maxWaitTime = 0.75f;
+
+    private float moveTimeSeconds;
+    private float minMoveTime = 1f;
+    private float maxMoveTime = 1.75f;
+    private float waitTimeSeconds;
 
     private void Start()
     {
-        _moveTimeSeconds = Random.Range(_minMoveTime, _maxMoveTime);
-        _waitTimeSeconds = Random.Range(_minMoveTime, _maxMoveTime);
+        moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+        waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         ChangeDirection();
     }
 
@@ -27,38 +28,38 @@ public class SkeletonControl : EnemyBase
 
     void UpdateDirection()
     {
-        if (CurrentState == MovementState.walking)
+        if (CurrentState == EnemyState.walking)
         {
-            _moveTimeSeconds -= Time.deltaTime;
-            if (_moveTimeSeconds <= 0)
+            moveTimeSeconds -= Time.deltaTime;
+            if (moveTimeSeconds <= 0)
             {
-                _moveTimeSeconds = Random.Range(_minMoveTime, _maxMoveTime);
-                CurrentState = MovementState.idle;
+                moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+                CurrentState = EnemyState.idle;
             }
 
             if (_characterInRange != null)
             {
-                _directionVector = _characterInRange.transform.position - transform.position;
-                _directionVector.Normalize();
+                directionVector = _characterInRange.transform.position - transform.position;
+                directionVector.Normalize();
             }
         }
         else
         {
-            _waitTimeSeconds -= Time.deltaTime;
-            if (_waitTimeSeconds <= 0)
+            waitTimeSeconds -= Time.deltaTime;
+            if (waitTimeSeconds <= 0)
             {
                 ChooseDifferentDirection();
-                CurrentState = MovementState.walking;
-                _waitTimeSeconds = Random.Range(_minMoveTime, _maxMoveTime);
+                CurrentState = EnemyState.walking;
+                waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
             }
         }
 
         if(_health <= 0)
         {
-            _directionVector = Vector2.zero;
+            directionVector = Vector2.zero;
         }
 
-        SetDirection(_directionVector);
+        SetDirection(directionVector);
     }
 
     public void SetCharacterInRange(GameObject characterInRange)
@@ -66,17 +67,19 @@ public class SkeletonControl : EnemyBase
         _characterInRange = characterInRange;
     }
 
-    public void OnHitCharacter(GameObject character)
+    public void Attack(GameObject character)
     {
-        CurrentState = MovementState.attacking;
+        if (CurrentState != EnemyState.attacking)
+        {
+            character.GetComponent<Character>().DealDamage(DamagePerHit);
+            StartCoroutine(AttackCo());
+        }
+    }
 
-        Vector2 direction = character.transform.position - transform.position;
-        direction.Normalize();
-
-        _characterInRange = null;
-        
-        character.GetComponent<Character>().Health.DealDamage(DamagePerHit);
-
-        CurrentState = MovementState.idle;
+    IEnumerator AttackCo()
+    {
+        CurrentState = EnemyState.attacking;
+        yield return new WaitForSeconds(1f);
+        CurrentState = EnemyState.idle;
     }
 }
