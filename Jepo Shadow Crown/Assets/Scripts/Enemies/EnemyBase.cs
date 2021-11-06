@@ -13,7 +13,9 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected float DelayDeathFX;
     [SerializeField] protected float DamagePerHit;
     [SerializeField] protected BoxCollider2D Bounds;
-    [SerializeField] protected LootTable LootTable;    
+    [SerializeField] protected LootTable LootTable;
+    [SerializeField] protected GameObject Visuals;
+    [SerializeField] protected GameObject CollisionTrigger;
 
     protected float _health;
 
@@ -122,6 +124,9 @@ public class EnemyBase : AttackableBase
 
         if (_health <= 0)
         {
+            Visuals.SetActive(false);
+            CollisionTrigger.SetActive(false);
+
             if (DeathFX != null)
             {
                 StartCoroutine(DeathFXCo(DelayDeathFX));
@@ -136,6 +141,8 @@ public class EnemyBase : AttackableBase
     public void FullRestore()
     {
         MainObject.SetActive(true);
+        Visuals.SetActive(true);
+        CollisionTrigger.SetActive(true);
         MainObject.transform.position = startPos;
         _health = MaxHealth;
         CurrentState = EnemyState.idle;
@@ -153,9 +160,11 @@ public class EnemyBase : AttackableBase
 
     IEnumerator DeathFXCo(float delay)
     {
+        
+
         yield return new WaitForSeconds(delay);
 
-        Instantiate(DeathFX, base.transform.position, Quaternion.identity);
+        Instantiate(DeathFX, base.transform.position, Quaternion.identity, MainObject.transform);
     }
 
     IEnumerator HitEffectCo(float delay)

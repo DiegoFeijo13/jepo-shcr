@@ -13,7 +13,7 @@ public class SkeletonProximityTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player")&& collider.isTrigger)
         {
             control.SetCharacterInRange(collider.gameObject);
         }
@@ -21,7 +21,7 @@ public class SkeletonProximityTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && collider.isTrigger)
         {
             control.SetCharacterInRange(null);
         }

@@ -6,25 +6,23 @@ using UnityEngine.UI;
 public class InteractableChest : InteractableBase
 {
     [Header("Contents")]
-    public Item Contents;
-    public Inventory PlayerInventory;
-    public bool IsOpen;
+    [SerializeField] private Item contents;
+    [SerializeField] private Inventory playerInventory;
+    [SerializeField] private bool isOpen;
 
     [Header("Animation")]
     private Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         anim = GetComponentInChildren<Animator>();
     
-        if (IsOpen)
+        if (isOpen)
         {
             anim.SetBool("isOpen", true);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateInteract();
@@ -32,7 +30,7 @@ public class InteractableChest : InteractableBase
 
     public override void InteractInternal()
     {
-        if (!IsOpen)
+        if (!isOpen)
         {
             //Open the chest
             OpenChest();
@@ -46,10 +44,12 @@ public class InteractableChest : InteractableBase
 
     public void OpenChest()
     {
-        PlayerInventory.CurrentItem = Contents;
-        PlayerInventory.AddItem(Contents);
-        IsOpen = true;
+        playerInventory.CurrentItem = contents;
+        playerInventory.AddItem(contents);
+        isOpen = true;
+        playerInRange = false;
         anim.SetBool("isOpen", true);
+        UpdateContextClue();
     }
 
     public void ChestAlreadyOpen()
@@ -59,7 +59,7 @@ public class InteractableChest : InteractableBase
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (!IsOpen)
+        if (!isOpen)
         {
             base.OnTriggerEnter2D(other);
         }
@@ -67,7 +67,7 @@ public class InteractableChest : InteractableBase
 
     public override void OnTriggerExit2D(Collider2D other)
     {
-        if (!IsOpen)
+        if (!isOpen)
         {
             base.OnTriggerExit2D(other);
         }

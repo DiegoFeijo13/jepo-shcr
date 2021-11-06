@@ -12,40 +12,49 @@ public enum DoorType
 public class InteractableDoor : InteractableBase
 {
     [Header("Door variables")]
-    public DoorType ThisDoorType;
-    public bool IsOpen = false;
-    public Inventory PlayerInventory;
-    public GameObject DoorVisuals;
+    [SerializeField] private DoorType thisDoorType;
+    [SerializeField] private bool isOpen = false;
+    [SerializeField] private Inventory playerInventory;
+    [SerializeField] private GameObject doorVisuals;
+
+    public DoorType Type => thisDoorType;
 
     void Update()
     {
         UpdateInteract();
     }
 
-    public override void InteractInternal()
-    {
-        if (!IsOpen && ThisDoorType == DoorType.key && PlayerInventory.Keys > 0)
-        {
-            PlayerInventory.Keys--;
-            Open();
-        }
-    }
-
     private void Open()
     {
-        DoorVisuals.SetActive(false);     
-        IsOpen = true;        
+        if (thisDoorType == DoorType.key)
+        {
+            if (playerInventory.Keys <= 0)
+                return;
+            
+            playerInventory.Keys--;
+        }
+
+        doorVisuals.SetActive(false);     
+        isOpen = true;
+        playerInRange = false;
+        UpdateContextClue();
+    }
+
+    public override void InteractInternal()
+    {
+        if (!isOpen)
+            Open();
     }
 
     public void Close()
     {
-        DoorVisuals.SetActive(true);
-        IsOpen = false;        
+        doorVisuals.SetActive(true);
+        isOpen = false;        
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (!IsOpen)
+        if (!isOpen)
         {
             base.OnTriggerEnter2D(other);
         }
@@ -53,7 +62,7 @@ public class InteractableDoor : InteractableBase
 
     public override void OnTriggerExit2D(Collider2D other)
     {
-        if (!IsOpen)
+        if (!isOpen)
         {
             base.OnTriggerExit2D(other);
         }

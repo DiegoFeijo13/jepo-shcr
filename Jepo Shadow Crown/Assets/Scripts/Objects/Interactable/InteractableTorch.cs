@@ -5,13 +5,26 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class InteractableTorch : InteractableBase
 {  
-    public bool IsLit;
-    
+    [SerializeField] private bool isLit;
+    [SerializeField] private Sprite litSprite;
+    [SerializeField] private Sprite unlitSprite;
+
+
     public GameObject LightEffect;
 
     private void Awake()
     {
-        LightEffect.SetActive(IsLit);
+        LightEffect.SetActive(isLit);
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        if (isLit && litSprite != null)
+            spriteRenderer.sprite = litSprite;
+
+        if (!isLit && unlitSprite != null)
+            spriteRenderer.sprite = unlitSprite;
     }
 
     void Update()
@@ -22,7 +35,8 @@ public class InteractableTorch : InteractableBase
 
     public override void InteractInternal()
     {
-        bool active = LightEffect.activeSelf;
-        LightEffect.SetActive(!active);
+        isLit = !isLit;        
+        LightEffect.SetActive(isLit);
+        UpdateSprite();
     }
 }

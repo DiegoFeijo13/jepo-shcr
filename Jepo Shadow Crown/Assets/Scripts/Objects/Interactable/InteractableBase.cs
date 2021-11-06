@@ -4,13 +4,31 @@ using UnityEngine;
 
 public class InteractableBase : MonoBehaviour
 {    
-    protected bool PlayerInRange;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected GameObject contextClue;
+    
+    protected bool playerInRange;
+
+    private void Awake()
+    {
+        UpdateContextClue();
+    }
+
+    protected void UpdateContextClue()
+    {
+        if (contextClue == null)
+            return;
+
+        contextClue.SetActive(playerInRange);
+    }
+
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {            
-            PlayerInRange = true;
+            playerInRange = true;
+            UpdateContextClue();
         }
     }
 
@@ -18,13 +36,14 @@ public class InteractableBase : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {            
-            PlayerInRange = false;
+            playerInRange = false;
+            UpdateContextClue();
         }
     }
 
     public void UpdateInteract()
     {
-        if (Input.GetButtonDown("Action") && PlayerInRange)
+        if (Input.GetButtonDown("Action") && playerInRange)
         {
             InteractInternal();
         }

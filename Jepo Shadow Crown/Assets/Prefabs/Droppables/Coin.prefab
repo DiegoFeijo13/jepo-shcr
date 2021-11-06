@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInventory: {fileID: 11400000, guid: b84f6bacfb2c59c47a531519073c1bc2, type: 2}
-  Amount: 5
+  Amount: 1
 --- !u!61 &7017133798481599655
 BoxCollider2D:
   m_ObjectHideFlags: 0

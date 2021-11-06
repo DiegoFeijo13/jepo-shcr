@@ -76,7 +76,7 @@ public class RoomParent : MonoBehaviour
         {
             foreach (var door in Doors)
             {
-                if(door.ThisDoorType != DoorType.key)
+                if(door.Type != DoorType.key)
                 {
                     door.Close();
                 }

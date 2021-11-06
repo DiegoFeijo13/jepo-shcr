@@ -7,15 +7,20 @@ public class EnemySpawn : EnemyBase
 {
     [SerializeField] private GameObject[] enemies;    
     [SerializeField] private float cooldown;
+    [SerializeField] private int maxEnemies;
        
-    private int _lastEnemyIndex;
+    private int lastEnemyIndex;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
 
+    GameObject characterInRange;
     private bool canSpawn = true;
 
     // Update is called once per frame
     void Update()
     {
-        if (canSpawn)
+        RemoveDestroyed();
+
+        if (CanSpawn())
             SpawnEnemy();
     }
 
@@ -23,16 +28,34 @@ public class EnemySpawn : EnemyBase
     {
         if(enemies != null && enemies.Length > 0)
         {
-            _lastEnemyIndex++;
-            if (_lastEnemyIndex > enemies.Length - 1)
-                _lastEnemyIndex = 0;
+            lastEnemyIndex++;
+            if (lastEnemyIndex > enemies.Length - 1)
+                lastEnemyIndex = 0;
 
-            GameObject enemyToSpawn = enemies[_lastEnemyIndex];
+            GameObject enemyToSpawn = enemies[lastEnemyIndex];
 
-            Instantiate(enemyToSpawn, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            GameObject newEnemy = Instantiate(enemyToSpawn, this.gameObject.transform.position, this.gameObject.transform.rotation);
+
+            spawnedEnemies.Add(newEnemy);
 
             StartCoroutine(CooldownCo());
         }
+    }
+
+    private void RemoveDestroyed()
+    {
+        if (spawnedEnemies.Count > 0)
+            spawnedEnemies.RemoveAll(x => x == null);
+    }
+
+    private bool CanSpawn()
+    {
+        return canSpawn && characterInRange != null && spawnedEnemies.Count < maxEnemies;
+    }
+
+    public void SetCharacterInRange(GameObject characterInRange)
+    {
+        this.characterInRange = characterInRange;
     }
 
     IEnumerator CooldownCo()

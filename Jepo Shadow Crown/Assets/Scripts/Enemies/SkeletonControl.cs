@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkeletonControl : EnemyBase
 {
-    GameObject _characterInRange;
+    GameObject characterInRange;
      
     [SerializeField] private float minWaitTime = 0.1f;
     [SerializeField] private float maxWaitTime = 0.75f;
@@ -37,9 +37,9 @@ public class SkeletonControl : EnemyBase
                 CurrentState = EnemyState.idle;
             }
 
-            if (_characterInRange != null)
+            if (characterInRange != null)
             {
-                directionVector = _characterInRange.transform.position - transform.position;
+                directionVector = characterInRange.transform.position - transform.position;
                 directionVector.Normalize();
             }
         }
@@ -64,7 +64,7 @@ public class SkeletonControl : EnemyBase
 
     public void SetCharacterInRange(GameObject characterInRange)
     {
-        _characterInRange = characterInRange;
+        this.characterInRange = characterInRange;
     }
 
     public void Attack(GameObject character)
