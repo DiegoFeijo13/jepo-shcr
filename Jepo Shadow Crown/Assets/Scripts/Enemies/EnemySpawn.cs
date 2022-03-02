@@ -24,6 +24,13 @@ public class EnemySpawn : EnemyBase
             SpawnEnemy();
     }
 
+    protected override void OnDie()
+    {
+        EnemyScore.UpdateKills(Enemies.Spawn);
+
+        base.OnDie();
+    }
+
     private void SpawnEnemy()
     {
         if(enemies != null && enemies.Length > 0)

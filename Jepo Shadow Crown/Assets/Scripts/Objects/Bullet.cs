@@ -31,17 +31,18 @@ namespace Assets.Scripts.Objects
             }
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                var enemyBase = collision.gameObject.GetComponent<EnemyBase>();                
+                var enemyBase = collision.gameObject.GetComponent<EnemyBase>();
                 if (enemyBase != null)
                 {
                     enemyBase.OnHit(gameObject.transform.position, ItemType.Bullet, damage);
                 }
-                StartCoroutine(KnockCo(collision));
-                
+
+                StartCoroutine(KnockCo(collision.gameObject));
+
                 Destroy(this.gameObject);
             }
 
@@ -51,29 +52,9 @@ namespace Assets.Scripts.Objects
             }
         }
 
-        private void Knock(Collider2D collision)
+        private IEnumerator KnockCo(GameObject obj)
         {
-            
-            var body = collision.GetComponent<Rigidbody2D>();
-            //BaseMovementModel baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
-            if (body != null 
-                //&& baseMovementModel != null
-                )
-            {
-                Vector2 difference = body.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                body.AddForce(difference, ForceMode2D.Impulse);
-
-                //baseMovementModel.CurrentState = MovementState.staggering;
-                StartCoroutine(KnockCo(collision));
-            }
-
-            
-        }
-
-        private IEnumerator KnockCo(Collider2D collision)
-        {
-            var body = collision.gameObject.GetComponent<Rigidbody2D>();
+            var body = obj.GetComponent<Rigidbody2D>();
             //var baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
             if (body != null)
             {

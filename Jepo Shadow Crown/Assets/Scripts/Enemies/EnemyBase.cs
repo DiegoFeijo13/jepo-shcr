@@ -16,6 +16,7 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
     [SerializeField] protected GameObject CollisionTrigger;
+    [SerializeField] protected EnemyScore EnemyScore;
 
     protected float _health;
 
@@ -108,6 +109,23 @@ public class EnemyBase : AttackableBase
         }
     }
 
+    protected virtual void OnDie()
+    {
+        if (Visuals != null)
+            Visuals.SetActive(false);
+        if (CollisionTrigger != null)
+            CollisionTrigger.SetActive(false);
+
+        if (DeathFX != null)
+        {
+            StartCoroutine(DeathFXCo(DelayDeathFX));
+        }
+
+        MakeLoot();
+
+        StartCoroutine(DestroyCo(DestroyDelayOnDeath));
+    }
+
     #region Public Methods
     public override void OnHit(Vector2 pushDirection, ItemType itemType, float damage)
     {
@@ -124,17 +142,7 @@ public class EnemyBase : AttackableBase
 
         if (_health <= 0)
         {
-            Visuals.SetActive(false);
-            CollisionTrigger.SetActive(false);
-
-            if (DeathFX != null)
-            {
-                StartCoroutine(DeathFXCo(DelayDeathFX));
-            }
-
-            MakeLoot();
-
-            StartCoroutine(DestroyCo(DestroyDelayOnDeath));
+            OnDie();
         }
     }
 

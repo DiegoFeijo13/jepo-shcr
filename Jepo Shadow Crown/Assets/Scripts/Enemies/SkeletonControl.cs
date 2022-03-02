@@ -26,6 +26,13 @@ public class SkeletonControl : EnemyBase
         UpdateDirection();
     }
 
+    protected override void OnDie()
+    {
+        EnemyScore.UpdateKills(Enemies.Skeleton);
+
+        base.OnDie();
+    }
+
     void UpdateDirection()
     {
         if (CurrentState == EnemyState.walking)
