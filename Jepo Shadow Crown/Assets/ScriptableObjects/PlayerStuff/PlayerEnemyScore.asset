@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa76a9150f5b04241860a6bc7d21cf0c, type: 3}
   m_Name: PlayerEnemyScore
   m_EditorClassIdentifier: 
+  Score: []
+  KillsInARow: 3

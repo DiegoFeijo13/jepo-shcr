@@ -25,8 +25,8 @@ public class PlayerHealth : ScriptableObject
 
         if (Health <= 0)
         {
-            Health = 0;            
-            //Raise death signal
+            Health = 0;
+            GameManager.Instance.GameOver();
         }
     }
 
