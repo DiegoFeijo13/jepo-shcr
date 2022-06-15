@@ -152,9 +152,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -164,8 +167,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -186,10 +189,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1152,9 +1159,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Door0_38: 2605319116879907230
+      Door0_0: -8941794205797320855
+      Door0_26: -9148092411277767751
+      Door0_16: 3529131384001681971
+      Door0_25: 4924751560082732268
+      Door0_27: -7035930849996029517
+      Door0_41: 5623480230446578568
+      Door0_30: 5739463311538440922
+      Door0_13: 8454238271648515406
+      Door0_36: 2660343363696123433
+      Door0_24: 7821028322061908129
+      Door0_6: 2647361621426063743
+      Door0_19: -3614480778146910658
+      Door0_43: 6026348765387371812
+      Door0_10: 1182575922460950415
+      Door0_33: -196780420833963419
+      Door0_31: 6967853195536784753
+      Door0_37: -5037807397767253959
+      Door0_1: 1710657336848023152
+      Door0_8: 7748185739226860511
+      Door0_7: -4018438462400062612
+      Door0_12: 5586063305471162096
+      Door0_4: 5902050559172422929
+      Door0_9: -3979079104300941373
+      Door0_11: -8498877800043203325
+      Door0_14: -842429700445803731
+      Door0_34: -8557990825520284113
+      Door0_23: -5692754421039770112
+      Door0_5: -3823049604913731404
+      Door0_15: -3417125331131277582
+      Door0_18: 3243489754509080362
+      Door0_28: 5028280566052796479
+      Door0_20: 8586899564518475134
+      Door0_3: 8907608951701044870
+      Door0_17: -9043434272056173495
+      Door0_21: -4666835757593260976
+      Door0_35: 7407547516372806676
+      Door0_2: 4223693291354362163
+      Door0_40: -2687284096917533490
+      Door0_22: -8744160507097431022
+      Door0_29: -7189984950058185963
+      Door0_32: -8254044345386245772
+      Door0_39: 1374493219899697651
+      Door0_42: 3626763431910015072
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
