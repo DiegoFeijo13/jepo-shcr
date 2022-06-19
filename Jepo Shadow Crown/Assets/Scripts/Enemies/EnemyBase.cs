@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : AttackableBase
 {
+    [SerializeField] public int Level;
     [SerializeField] protected int MaxHealth;
     [SerializeField] protected GameObject MainObject;
     [SerializeField] protected float HitPushStrength;
