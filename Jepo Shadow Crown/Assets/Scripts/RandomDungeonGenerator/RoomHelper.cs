@@ -38,14 +38,11 @@ public static class RoomHelper
         unvisited = unvisited.Except(nextNodes).ToList();
 
         if (nextNodes.Any())
-    {
+        {
             foreach (var node in nextNodes)
-        {
+            {
                 NextNode(node.RoomTo.Center, node.Length + distance, unvisited, rooms);
-        }
-        else
-        {
-            roomDistances.Add(roomCenter, distanceFromStart);
+            }
         }
 
 

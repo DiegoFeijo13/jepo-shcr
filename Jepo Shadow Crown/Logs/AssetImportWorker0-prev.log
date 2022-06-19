@@ -15,7 +15,7 @@ C:/Users/Diego/Documents/Projects/Unity/jepo-shcr/Jepo Shadow Crown
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54472
+50899
 Successfully changed project path to: C:/Users/Diego/Documents/Projects/Unity/jepo-shcr/Jepo Shadow Crown
 C:/Users/Diego/Documents/Projects/Unity/jepo-shcr/Jepo Shadow Crown
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ C:/Users/Diego/Documents/Projects/Unity/jepo-shcr/Jepo Shadow Crown
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 106.42 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 137.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.1.0f1 (369b620af41c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -63,93 +63,93 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56516
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005598 seconds.
+Registered in 0.007519 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 104.59 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 125.53 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.928 seconds
+- Completed reload, in  1.204 seconds
 Domain Reload Profiling:
-	ReloadAssembly (929ms)
-		BeginReloadAssembly (96ms)
+	ReloadAssembly (1205ms)
+		BeginReloadAssembly (119ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (683ms)
-			LoadAssemblies (93ms)
+		EndReloadAssembly (884ms)
+			LoadAssemblies (116ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (156ms)
-				TypeCache.Initialize (156ms)
-					TypeCache.ScanAssembly (154ms)
+			SetupTypeCache (239ms)
+				TypeCache.Initialize (238ms)
+					TypeCache.ScanAssembly (235ms)
 				ResolveRequiredComponents (1ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (63ms)
-			SetupLoadedEditorAssemblies (397ms)
+			RebuildScriptCaches (75ms)
+			SetupLoadedEditorAssemblies (465ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (10ms)
-				SetLoadedEditorAssemblies (9ms)
-				RefreshPlugins (105ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (11ms)
+				RefreshPlugins (126ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (207ms)
-				ProcessInitializeOnLoadMethodAttributes (64ms)
+				ProcessInitializeOnLoadAttributes (239ms)
+				ProcessInitializeOnLoadMethodAttributes (76ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.008878 seconds.
+Registered in 0.011365 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 116.28 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 124.76 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.847 seconds
+- Completed reload, in  2.182 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1848ms)
-		BeginReloadAssembly (203ms)
+	ReloadAssembly (2183ms)
+		BeginReloadAssembly (263ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
+			DisableScriptedObjects (9ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (28ms)
-		EndReloadAssembly (1463ms)
-			LoadAssemblies (113ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (1724ms)
+			LoadAssemblies (151ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (379ms)
-				TypeCache.Initialize (365ms)
-					TypeCache.ScanAssembly (359ms)
-				ResolveRequiredComponents (15ms)
+			SetupTypeCache (445ms)
+				TypeCache.Initialize (428ms)
+					TypeCache.ScanAssembly (423ms)
+				ResolveRequiredComponents (17ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (92ms)
-			SetupLoadedEditorAssemblies (797ms)
+			RebuildScriptCaches (112ms)
+			SetupLoadedEditorAssemblies (930ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (8ms)
-				RefreshPlugins (116ms)
-				BeforeProcessingInitializeOnLoad (116ms)
-				ProcessInitializeOnLoadAttributes (420ms)
-				ProcessInitializeOnLoadMethodAttributes (123ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (9ms)
+				RefreshPlugins (125ms)
+				BeforeProcessingInitializeOnLoad (170ms)
+				ProcessInitializeOnLoadAttributes (432ms)
+				ProcessInitializeOnLoadMethodAttributes (175ms)
+				AfterProcessingInitializeOnLoad (10ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
+Refreshing native plugins compatible for Editor in 1.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4047 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 37 unused Assets / (349.1 KB). Loaded Objects now: 4511.
-Memory consumption went from 0.65 GB to 0.65 GB.
-Total: 5.851100 ms (FindLiveObjects: 0.560900 ms CreateObjectMapping: 0.573000 ms MarkObjects: 4.509400 ms  DeleteObjects: 0.206400 ms)
+Unloading 4062 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 37 unused Assets / (349.0 KB). Loaded Objects now: 4529.
+Memory consumption went from 0.66 GB to 0.66 GB.
+Total: 5.299600 ms (FindLiveObjects: 0.511000 ms CreateObjectMapping: 0.429500 ms MarkObjects: 4.174700 ms  DeleteObjects: 0.182600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -163,505 +163,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1109769.374899 seconds.
-  path: Assets/Art
-  artifactKey: Guid(f2e872163d628ee42883b2fb4cff8dcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art using Guid(f2e872163d628ee42883b2fb4cff8dcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a581d2f7e3a3155f7e301b3f9b1b97e5') in 0.017753 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Decor0.png
-  artifactKey: Guid(79387bdd3544d4b4281c1ac644db3051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Decor0.png using Guid(79387bdd3544d4b4281c1ac644db3051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbe89220c7f66e560ebafa8857eb9d85') in 0.851336 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Art/Tilesets
-  artifactKey: Guid(1f28e0795d44dec4485b4a8821ab04dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets using Guid(1f28e0795d44dec4485b4a8821ab04dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ac0f0852cd453675c62f13c41e29f7a') in 0.007393 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Art/Tilesets/Floor.png
-  artifactKey: Guid(3bb82f8e6e1db844a89d937765d866b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Floor.png using Guid(3bb82f8e6e1db844a89d937765d866b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c99b803de0a839ae6046455b4c5082f0') in 2.058249 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 802.460595 seconds.
-  path: Assets/Art/Tilesets/Floor 3.png
-  artifactKey: Guid(f99c6ad40f5805c4abebaccc5a72dbd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Floor 3.png using Guid(f99c6ad40f5805c4abebaccc5a72dbd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62964da5ceb0d828fcbbf0e9fa44d9e7') in 0.025838 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 239.930427 seconds.
-  path: Assets/Art/Tilesets/Wall 4.png
-  artifactKey: Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Wall 4.png using Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f78b2a0d41578f49938b4da86bd24ae4') in 0.021002 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 45.361829 seconds.
-  path: Assets/Art/Tilesets/Wall 4.png
-  artifactKey: Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Wall 4.png using Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c43f7528ec5eef0d29ccf8bacbad73c4') in 0.011051 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 14.855592 seconds.
-  path: Assets/Art/Tilesets/Wall 4.png
-  artifactKey: Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Wall 4.png using Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83f9ae8e5411572f3c63687e8274b702') in 0.072572 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 22.870220 seconds.
-  path: Assets/Art/Tilesets/Wall 0.png
-  artifactKey: Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Wall 0.png using Guid(f9d40e810716130438a30cad71e212ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16ce42149608255540bec7a9725548a5') in 0.040614 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 45.942738 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_0.asset
-  artifactKey: Guid(3aceeab2ce560ab48a09c6d8f07c6af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_0.asset using Guid(3aceeab2ce560ab48a09c6d8f07c6af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0feff00c532ff44f383a0445f5d61443') in 0.032375 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_21.asset
-  artifactKey: Guid(7349e05d1f929244d8231bee12235521) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_21.asset using Guid(7349e05d1f929244d8231bee12235521) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cc7bab3a76d38ce7f38217dab86cf10') in 0.016124 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_20.asset
-  artifactKey: Guid(251fdecab87988f4ba41b86da7c12a67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_20.asset using Guid(251fdecab87988f4ba41b86da7c12a67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd1f92a8c44dced9cb527aa4bdff589d') in 0.017987 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_2.asset
-  artifactKey: Guid(2b544b79716a7ce41a93b78b834cb255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_2.asset using Guid(2b544b79716a7ce41a93b78b834cb255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd886ed4953324bf5a53236e4090eb0b9') in 0.015948 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_27.asset
-  artifactKey: Guid(b761fad619c958442827e37f053b2e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_27.asset using Guid(b761fad619c958442827e37f053b2e46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a24867f65b01b1f1c47190105dea3dec') in 0.015415 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_91.asset
-  artifactKey: Guid(72f47f8f186aeb9499aeda66b2d11050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_91.asset using Guid(72f47f8f186aeb9499aeda66b2d11050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da95d709a48034700e62071568adbc2c') in 0.015045 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_110.asset
-  artifactKey: Guid(20892678d8c7bd044aa295c47845c857) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_110.asset using Guid(20892678d8c7bd044aa295c47845c857) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '469a19b0b194ec6ee99e5dbaed394893') in 0.018775 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_42.asset
-  artifactKey: Guid(d2fc9d5f98cdd544482023eb4e6989b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_42.asset using Guid(d2fc9d5f98cdd544482023eb4e6989b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18d5d7a8a728484d7d109dc81ea81722') in 0.017345 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_30.asset
-  artifactKey: Guid(f947dca1a091f954a84f5094483b9a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_30.asset using Guid(f947dca1a091f954a84f5094483b9a7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8e6e86ee5ca4f8dcf7b0cea3b18191d') in 0.020298 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_49.asset
-  artifactKey: Guid(9054f09a1b0670940b65c0f70e345585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_49.asset using Guid(9054f09a1b0670940b65c0f70e345585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd477810413b7fe8720c89dbeadc04cf') in 0.018025 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_93.asset
-  artifactKey: Guid(6a36aff9efb97e849affe22ad0e16922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_93.asset using Guid(6a36aff9efb97e849affe22ad0e16922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7033d3d48026ced9418dd9077a24f0c5') in 0.014874 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_97.asset
-  artifactKey: Guid(7206081ecc9da0445bda39f3e6fdfcd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_97.asset using Guid(7206081ecc9da0445bda39f3e6fdfcd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '375b1b4852de551b1a07a55ef9a4dc5d') in 0.014500 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_107.asset
-  artifactKey: Guid(ff6ba8f66aa7c154c8ef0468400a193f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_107.asset using Guid(ff6ba8f66aa7c154c8ef0468400a193f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f55158bb4bdd05daa6bcc56a202f49e') in 0.017744 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_58.asset
-  artifactKey: Guid(421a645ecd0f1064397a3764a40827cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_58.asset using Guid(421a645ecd0f1064397a3764a40827cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3aefa98e8281998691d303dbd81c195') in 0.015816 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_72.asset
-  artifactKey: Guid(7031f80cff63f1c4e863b6fc6fab6e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_72.asset using Guid(7031f80cff63f1c4e863b6fc6fab6e40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d71ac72cb90ceb53f5cde3b50aebf89') in 0.013269 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_81.asset
-  artifactKey: Guid(1348fb04783958a4fa3884780b164950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_81.asset using Guid(1348fb04783958a4fa3884780b164950) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '736248aa46f6bee8bee7e5da046fc5e4') in 0.015384 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_25.asset
-  artifactKey: Guid(1ca8ce236fde7c845a0cee49e8ec185a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_25.asset using Guid(1ca8ce236fde7c845a0cee49e8ec185a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '772320ebbac2a1bf71c0a68d38444111') in 0.015703 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_46.asset
-  artifactKey: Guid(c5731cd55c5980b4482a636a94375483) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_46.asset using Guid(c5731cd55c5980b4482a636a94375483) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd7eddea48b6a3a0eb28554b1dd680a2') in 0.014807 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_56.asset
-  artifactKey: Guid(c6a48b6ee7461ad4583577440774d03b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_56.asset using Guid(c6a48b6ee7461ad4583577440774d03b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48fc76dabd7f79f68bb94eb88e9debf7') in 0.016233 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_96.asset
-  artifactKey: Guid(acae2f413171b3a4d81d8c702ae8d3bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_96.asset using Guid(acae2f413171b3a4d81d8c702ae8d3bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '891661efbc10d2797a8434a731961587') in 0.015546 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_18.asset
-  artifactKey: Guid(be11b6f1cba7f134b92713c8a99a6849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_18.asset using Guid(be11b6f1cba7f134b92713c8a99a6849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff84bd9cfbe025469a84a87d7cbbf6b4') in 0.021842 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_4.asset
-  artifactKey: Guid(a9cbe6aa2b127cd4fa5d249574297d9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_4.asset using Guid(a9cbe6aa2b127cd4fa5d249574297d9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64f9b4d39868dd842a4a1cbe8abacca6') in 0.017904 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000077 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_105.asset
-  artifactKey: Guid(ca2a970f5db289441aa0fd53a6601aaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_105.asset using Guid(ca2a970f5db289441aa0fd53a6601aaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c01794afce36a5255d4061fc3935d1c') in 0.014577 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_41.asset
-  artifactKey: Guid(cee9c25860661c141894cd3fad786c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_41.asset using Guid(cee9c25860661c141894cd3fad786c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da10f6b47d1b3bfba0698f30c786b3e6') in 0.017103 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_65.asset
-  artifactKey: Guid(0248eda3fcc968246806093555f3f355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_65.asset using Guid(0248eda3fcc968246806093555f3f355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '092e8997fe57067837d825268650ec08') in 0.015623 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_68.asset
-  artifactKey: Guid(22a925bafa51bbe4eb162a1da4dfcbbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_68.asset using Guid(22a925bafa51bbe4eb162a1da4dfcbbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a364997b6609d265f4b7e0241e4d2c8') in 0.014709 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_99.asset
-  artifactKey: Guid(e83eab344351d2d498459aeb20bc15b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_99.asset using Guid(e83eab344351d2d498459aeb20bc15b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '047372e14d8bd4cf921f3d2df853b219') in 0.018341 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_8.asset
-  artifactKey: Guid(f74cbd0a48c27db44af324c2fa787ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_8.asset using Guid(f74cbd0a48c27db44af324c2fa787ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '327cd4ef2b7ea58de799a2c55a869f24') in 0.017063 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_35.asset
-  artifactKey: Guid(2f80f1c22fb9763448420fc23d5ca740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_35.asset using Guid(2f80f1c22fb9763448420fc23d5ca740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '967de4e0fc10bad49087163e5a3594b4') in 0.013324 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_43.asset
-  artifactKey: Guid(25b5462f577d76a4cb76d271990dcad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_43.asset using Guid(25b5462f577d76a4cb76d271990dcad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c89e91e884b7d7ad32d3c245ae1c075a') in 0.013105 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000049 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_6.asset
-  artifactKey: Guid(0f37fb5355acacf43a8e47d70fc3f4b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_6.asset using Guid(0f37fb5355acacf43a8e47d70fc3f4b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80f21f7a5e60589ccb701ab652de3d9d') in 0.015152 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_61.asset
-  artifactKey: Guid(79f97c8a6808d884887ea73ea4b5ee36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_61.asset using Guid(79f97c8a6808d884887ea73ea4b5ee36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a5d43bb9e1520ca4ac85adf9e655ddf') in 0.014282 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_64.asset
-  artifactKey: Guid(5cdcd141920715e43a3fa2e9b05b0404) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_64.asset using Guid(5cdcd141920715e43a3fa2e9b05b0404) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68a5ffb132e25e6d372bcf8cec722a99') in 0.017584 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000067 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_84.asset
-  artifactKey: Guid(a4bfc1256f1fcb249aaa0e7d5c58550e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_84.asset using Guid(a4bfc1256f1fcb249aaa0e7d5c58550e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e27714f3c7ecd37ad6c24ae6efde917') in 0.014938 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_47.asset
-  artifactKey: Guid(5f30d37dd94d7c24da41e586c8c68d50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_47.asset using Guid(5f30d37dd94d7c24da41e586c8c68d50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f014426142bb1d3b5aebaa5c4d7d3f1d') in 0.015489 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_11.asset
-  artifactKey: Guid(4a7bbeff48161d649b88cb5fd25ad013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_11.asset using Guid(4a7bbeff48161d649b88cb5fd25ad013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3129c41fa6a6e7fd980d1dacf4b6a89f') in 0.016183 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_103.asset
-  artifactKey: Guid(ce760a402b8d2ae469d9856b902024de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_103.asset using Guid(ce760a402b8d2ae469d9856b902024de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8a149815efa07b031ff61eddda3b4cf') in 0.014507 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_104.asset
-  artifactKey: Guid(acd071ef8881c8646a0ed678a32bd70b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_104.asset using Guid(acd071ef8881c8646a0ed678a32bd70b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87f92c8f7dc3f3783c45eb0d2d84908a') in 0.017188 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_94.asset
-  artifactKey: Guid(76a45fcd3dfa1664eba5b756c4fb3fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_94.asset using Guid(76a45fcd3dfa1664eba5b756c4fb3fd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0b7976eb2d4c26ca5609e8d4e250693') in 0.018275 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_38.asset
-  artifactKey: Guid(197aabe889c9c0244a77503609d7902c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_38.asset using Guid(197aabe889c9c0244a77503609d7902c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b398b074e6351c7b14e22f54eaa585ef') in 0.011536 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_75.asset
-  artifactKey: Guid(e22328003868fbc4b92f05e9a23dd110) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_75.asset using Guid(e22328003868fbc4b92f05e9a23dd110) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0740e8d6512e9e9ea3e76661b0dba796') in 0.014594 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_50.asset
-  artifactKey: Guid(ecd0bd9df03f339408bcdc753d5525b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_50.asset using Guid(ecd0bd9df03f339408bcdc753d5525b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a61f66ace5240134dcd9d0563bfcaee') in 0.015103 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_12.asset
-  artifactKey: Guid(cefb906db831ed3428094cca2eae9ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_12.asset using Guid(cefb906db831ed3428094cca2eae9ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b70aeec28f12b4dbb84a64b5ca0a9ec5') in 0.014888 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_76.asset
-  artifactKey: Guid(db4dd49b566a2524b93f54b6974dd58e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_76.asset using Guid(db4dd49b566a2524b93f54b6974dd58e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0548a1a3aa9e6c8126a090a658e26be') in 0.011878 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_15.asset
-  artifactKey: Guid(fe1b6ec050c855942970c5679b29e026) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_15.asset using Guid(fe1b6ec050c855942970c5679b29e026) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'deb3a0e97158543a7ed5bc952ac907e0') in 0.016203 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_40.asset
-  artifactKey: Guid(b7d077a6a2949c743aad9ca65b672c5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_40.asset using Guid(b7d077a6a2949c743aad9ca65b672c5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf9352d26791c880b26f22bea1e08d36') in 0.013344 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000057 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_71.asset
-  artifactKey: Guid(8e46931ba1937764ea40dac1f16c7346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_71.asset using Guid(8e46931ba1937764ea40dac1f16c7346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bcf18e610baa11d602202166a8adf67') in 0.011235 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_66.asset
-  artifactKey: Guid(205a52a142584874bae9b874f04f6b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_66.asset using Guid(205a52a142584874bae9b874f04f6b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29d4e1a3d95e656ff330d3ecb03bbea7') in 0.015982 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_33.asset
-  artifactKey: Guid(02afd40d13ff65c429f34d5e5128fd9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_33.asset using Guid(02afd40d13ff65c429f34d5e5128fd9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a504217cdc0c26a15caa4c6e5f5a70dd') in 0.012923 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_9.asset
-  artifactKey: Guid(104411b138574f14baf5cfbf389daa61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_9.asset using Guid(104411b138574f14baf5cfbf389daa61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34b0dfe3ae01e19d54b45960c651e29a') in 0.012131 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_90.asset
-  artifactKey: Guid(ebabcc555348df54daf5e8266439c82d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_90.asset using Guid(ebabcc555348df54daf5e8266439c82d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb578878d94e7279ef2a3186cf5c2742') in 0.011908 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_51.asset
-  artifactKey: Guid(9e7c674de4761e340964502f4454716d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_51.asset using Guid(9e7c674de4761e340964502f4454716d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9b4f72b4ba472b3d6e093b6ccee8bc1') in 0.017632 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_52.asset
-  artifactKey: Guid(2ae5b1d82157a7e47bb684189e72e4fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_52.asset using Guid(2ae5b1d82157a7e47bb684189e72e4fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17599117412940499c1f0a331c36c598') in 0.014098 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_45.asset
-  artifactKey: Guid(ddd5fdd3b474d074ab02e91fecb61c0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_45.asset using Guid(ddd5fdd3b474d074ab02e91fecb61c0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17abbe9300f1201852c6f8d916d46dc1') in 0.012719 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_92.asset
-  artifactKey: Guid(cad6ecc06dab43e41b250f3f33026bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_92.asset using Guid(cad6ecc06dab43e41b250f3f33026bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bd622df333e29ddebaa0e8948a6b553') in 0.017249 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_63.asset
-  artifactKey: Guid(19c4876376e292c4483af467fac487df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_63.asset using Guid(19c4876376e292c4483af467fac487df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0dec917283568fca51913b910fc6cf1') in 0.018219 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.146200 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_111.asset
-  artifactKey: Guid(153f2e8697844bc49aad96c5c087876d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_111.asset using Guid(153f2e8697844bc49aad96c5c087876d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94bd538dfeca06d51816faaade36ac37') in 0.013912 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_122.asset
-  artifactKey: Guid(95cf96fbfb4c3a545a59f8d9e1098a0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_122.asset using Guid(95cf96fbfb4c3a545a59f8d9e1098a0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4097eae51853c4688ec10805db8e01cc') in 0.011550 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_123.asset
-  artifactKey: Guid(7782a55e328fd2b46a2da9b2a93480bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_123.asset using Guid(7782a55e328fd2b46a2da9b2a93480bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9edee5db48c1b9cabf5c9bda73bbc233') in 0.014647 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_113.asset
-  artifactKey: Guid(0295ba03a894d934bb8e1d4ee556f95d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_113.asset using Guid(0295ba03a894d934bb8e1d4ee556f95d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3017555f446167f5cd257af5484e5184') in 0.014351 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_137.asset
-  artifactKey: Guid(071248f5567822f4091501f908c2647a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_137.asset using Guid(071248f5567822f4091501f908c2647a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '635893a0d7857771764475df9b005704') in 0.014693 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_142.asset
-  artifactKey: Guid(b16d68246396d064c9eb6006e0dbb620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_142.asset using Guid(b16d68246396d064c9eb6006e0dbb620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e903f256de29e11a0cd8ce463a80cc1a') in 0.012839 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_125.asset
-  artifactKey: Guid(9ca0c92ab36dd0a4f819759023f9b4fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_125.asset using Guid(9ca0c92ab36dd0a4f819759023f9b4fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37b361180f04657bed2a6334fbd2063b') in 0.014172 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_115.asset
-  artifactKey: Guid(bce123ce9bdfea34bbd5983280032c0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_115.asset using Guid(bce123ce9bdfea34bbd5983280032c0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80879dcfda4ce72821a4f8a212ae0bf3') in 0.013011 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_136.asset
-  artifactKey: Guid(ccfd257e1be42f74090124c58de8477a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_136.asset using Guid(ccfd257e1be42f74090124c58de8477a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48f669e8f7ba27a2a898004a14711d46') in 0.014819 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_121.asset
-  artifactKey: Guid(a6a11fe00cc276c47b72ff0adc5ffc21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_121.asset using Guid(a6a11fe00cc276c47b72ff0adc5ffc21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c42f3fd3bc34d1f80731c47794202d3c') in 0.012767 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_138.asset
-  artifactKey: Guid(68271ac647e87f94cb17dc2ae9f85dfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_138.asset using Guid(68271ac647e87f94cb17dc2ae9f85dfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d5fa9d71007a5269c7f0a212a3a2617') in 0.015730 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_134.asset
-  artifactKey: Guid(729c8f99d704c6a42aa64eed31b03eb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_134.asset using Guid(729c8f99d704c6a42aa64eed31b03eb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f46fc7937c7de0d208f83fc1a7edbbd8') in 0.014308 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_132.asset
-  artifactKey: Guid(821b74dcdf1b73f4f80fdaf785146d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_132.asset using Guid(821b74dcdf1b73f4f80fdaf785146d91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a46e54f48e4f8e4b38786cf2336594a') in 0.013651 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_143.asset
-  artifactKey: Guid(ba8a77b36d882d94095f26788116927f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_143.asset using Guid(ba8a77b36d882d94095f26788116927f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6138ac17f79aa0fa50252e9372d0c042') in 0.014153 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_135.asset
-  artifactKey: Guid(4f654cd25c369a24a9537144a8a21746) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_135.asset using Guid(4f654cd25c369a24a9537144a8a21746) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf46d7b9c340724ad561cb74b6572fce') in 0.015486 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_117.asset
-  artifactKey: Guid(fece98b942327f2449d7efe6331825b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_117.asset using Guid(fece98b942327f2449d7efe6331825b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8827b89cca2438a9276afcbcc955d3f1') in 0.011274 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_128.asset
-  artifactKey: Guid(b935ef00bbff43f43a9f319fe89e85dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_128.asset using Guid(b935ef00bbff43f43a9f319fe89e85dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e94e28c552f765fae0bf6bef95a84309') in 0.014634 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_127.asset
-  artifactKey: Guid(e5cf57b899841f346b8497829b69506d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Decor/Decor0_127.asset using Guid(e5cf57b899841f346b8497829b69506d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08ae5f47f102e113d69e84c8facda41a') in 0.015732 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.689937 seconds.
-  path: Assets/Art/Tilesets/Tile Pallets/Wall 0/Wall 0.prefab
-  artifactKey: Guid(e237436ed64011d4aa23b76294b80757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Tilesets/Tile Pallets/Wall 0/Wall 0.prefab using Guid(e237436ed64011d4aa23b76294b80757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f15b80587addb60373b9de830492d64d') in 0.253371 seconds 
+  Time since last request: 143045.439365 seconds.
+  path: Assets/Animations
+  artifactKey: Guid(f5ab765d98219ae4ba17660fea49d92a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations using Guid(f5ab765d98219ae4ba17660fea49d92a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d4478d6baedec93d1c012e8f8448ada') in 0.014646 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006090 seconds.

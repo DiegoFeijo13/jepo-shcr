@@ -55,7 +55,6 @@ public class DungeonGenerator : AbstractDungeonGenerator
 
     protected override void RunProceduralGeneration(bool fromEditor = false)
     {
-        Validate();
         CreateRooms();
         PositionHero();
         if (!fromEditor)
@@ -176,7 +175,6 @@ public class DungeonGenerator : AbstractDungeonGenerator
     private void ClearData()
     {
         roomGenerator = new RoomGenerator(offset);        
-        roomsDictionary = new Dictionary<Vector2Int, BoundsInt>();
         tilemapVisualizer.Clear();
         DestroyEnemies();
         DestroyTorches();
