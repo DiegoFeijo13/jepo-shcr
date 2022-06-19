@@ -39,7 +39,7 @@ public class DungeonGenerator : AbstractDungeonGenerator
             foreach (var tile in startRoom.Positions)
             {
                 Gizmos.DrawCube(new Vector3(tile.x, tile.y), Vector3.one);
-            }
+        }
         }
 
         var exitRoom = roomGenerator.ExitRoom();
@@ -55,6 +55,7 @@ public class DungeonGenerator : AbstractDungeonGenerator
 
     protected override void RunProceduralGeneration(bool fromEditor = false)
     {
+        Validate();
         CreateRooms();
         PositionHero();
         if (!fromEditor)
@@ -144,6 +145,7 @@ public class DungeonGenerator : AbstractDungeonGenerator
             }
         }
 
+        PositionHero();
     }
     private void DestroyEnemies()
     {
@@ -151,7 +153,7 @@ public class DungeonGenerator : AbstractDungeonGenerator
             return;
 
         foreach (var e in Enemies)
-        {
+    {
             Destroy(e);
         }
 
@@ -173,15 +175,16 @@ public class DungeonGenerator : AbstractDungeonGenerator
 
     private void ClearData()
     {
-        roomGenerator = new RoomGenerator(offset);
+        roomGenerator = new RoomGenerator(offset);        
+        roomsDictionary = new Dictionary<Vector2Int, BoundsInt>();
         tilemapVisualizer.Clear();
         DestroyEnemies();
         DestroyTorches();
     }
 
+   
 
 
 
-
-
+    
 }

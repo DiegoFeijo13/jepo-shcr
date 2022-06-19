@@ -38,12 +38,17 @@ public static class RoomHelper
         unvisited = unvisited.Except(nextNodes).ToList();
 
         if (nextNodes.Any())
-        {
+    {
             foreach (var node in nextNodes)
-            {
+        {
                 NextNode(node.RoomTo.Center, node.Length + distance, unvisited, rooms);
-            }
         }
+        else
+        {
+            roomDistances.Add(roomCenter, distanceFromStart);
+        }
+
+
     }
 
     private static void Validate(Dictionary<Vector2Int, Room> rooms)
@@ -54,6 +59,8 @@ public static class RoomHelper
         if (!rooms.Values.Any(x => x.Tag == "start"))
             throw new ArgumentException("No start room");
     }
+
+
 }
 
 public class RoomNode

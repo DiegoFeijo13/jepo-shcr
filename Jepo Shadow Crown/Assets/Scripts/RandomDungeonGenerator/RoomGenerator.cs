@@ -7,6 +7,7 @@ using UnityEngine;
 public class RoomGenerator
 {
     private readonly int offset;
+    private readonly RoomHelper roomHelper;
 
     public Dictionary<Vector2Int, Room> rooms;
     public List<Corridor> corridors;
@@ -55,8 +56,11 @@ public class RoomGenerator
         foreach (var r in rooms)
         {
             roomCenters.Add(r.Key);
-        }
+    }
 
+    public HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
+    {
+        HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
         var currentRoomCenter = roomCenters[Random.Range(0, roomCenters.Count)];
         roomCenters.Remove(currentRoomCenter);
 
@@ -74,7 +78,7 @@ public class RoomGenerator
         }
 
         floorPositions.UnionWith(corridorPositions);
-    }
+        }
 
     public void TagRooms()
     {
