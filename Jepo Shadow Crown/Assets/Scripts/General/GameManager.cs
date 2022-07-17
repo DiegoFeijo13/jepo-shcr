@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private RDG rdg;
+
     private bool _isPaused;
     private string _gameOverScene = "GameOver";
 
@@ -17,6 +21,11 @@ public class GameManager : MonoBehaviour
 
             return _instance;
         }
+    }
+
+    internal void NextLevel()
+    {
+        rdg.NextLevel();
     }
 
     private void Awake()

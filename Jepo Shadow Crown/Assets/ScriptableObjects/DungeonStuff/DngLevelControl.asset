@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c40e2bd72602e4188d04271cdfe1da, type: 3}
   m_Name: DngLevelControl
   m_EditorClassIdentifier: 
-  CurrentLevel: 1
-  DungeonWidth: 50
-  DungeonHeight: 50
+  CurrentLevel: 4
+  DeviationRate: 14
+  RoomRate: 24
+  MaxRouteLength: 59
+  MaxRoutes: 29

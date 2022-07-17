@@ -12,7 +12,18 @@ public class Inventory : ScriptableObject
 
     public void OnEnable()
     {
-        
+        CurrentItem = null;
+        Items = new List<Item>();
+        Keys = 0;
+        Coins = 0;
+    }
+
+    private void Reset()
+    {
+        CurrentItem = null;
+        Items = new List<Item>();
+        Keys = 0;
+        Coins = 0;
     }
 
     public bool CheckForItem(Item item)

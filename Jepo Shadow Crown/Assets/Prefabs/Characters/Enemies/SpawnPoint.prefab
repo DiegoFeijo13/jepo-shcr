@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c453130f04e2124ca6da5db1b9abf6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
+  Level: 5
   MaxHealth: 6
   MainObject: {fileID: 5850275285857391450}
+  Range: 10
   HitPushStrength: 0
   HitPushDuration: 0
   DestroyDelayOnDeath: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 9108196645631258010, guid: 663d6d284798b2a4a875b3da0a994a4e, type: 3}
   cooldown: 3
-  maxEnemies: 3
+  maxEnemies: 2
 --- !u!61 &63041340459071908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,13 +226,12 @@ SpriteRenderer:
   m_SortingLayerID: 183392913
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1048804124574003445, guid: 79387bdd3544d4b4281c1ac644db3051,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92b845b3c54c59c448458240c26fa8ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6666667, y: 0.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

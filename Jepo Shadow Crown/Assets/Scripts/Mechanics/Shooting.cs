@@ -23,7 +23,7 @@ public class Shooting : MonoBehaviour
 
         UpdateLayer();
 
-        if (Input.GetButtonDown("Fire1") && playerMovement.CanAttack())
+        if (Input.GetButton("Fire1") && playerMovement.CanAttack())
             Shoot();
         
     }

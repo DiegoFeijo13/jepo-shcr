@@ -7,6 +7,7 @@ public class EnemyBase : AttackableBase
     [SerializeField] public int Level;
     [SerializeField] protected int MaxHealth;
     [SerializeField] protected GameObject MainObject;
+    [SerializeField] protected int Range;
     [SerializeField] protected float HitPushStrength;
     [SerializeField] protected float HitPushDuration;
     [SerializeField] protected float DestroyDelayOnDeath;
