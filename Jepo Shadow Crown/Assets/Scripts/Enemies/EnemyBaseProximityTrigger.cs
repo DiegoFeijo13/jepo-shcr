@@ -1,14 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnProximityTrigger : MonoBehaviour
+public class EnemyBaseProximityTrigger : MonoBehaviour
 {
-    EnemySpawn control;
+    EnemyBase control;
 
     private void Awake()
     {
-        control = GetComponentInParent<EnemySpawn>();
+        control = GetComponentInParent<EnemyBase>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

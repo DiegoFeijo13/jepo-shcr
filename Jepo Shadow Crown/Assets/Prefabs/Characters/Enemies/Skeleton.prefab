@@ -301,8 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 1
+  EnemyType: 0
   MaxHealth: 2
   MainObject: {fileID: 9108196645631258010}
+  Range: 0
   HitPushStrength: 0.5
   HitPushDuration: 0.2
   DestroyDelayOnDeath: 0.4
@@ -314,8 +316,6 @@ MonoBehaviour:
   Visuals: {fileID: 9108196647046866998}
   CollisionTrigger: {fileID: 9108196645653207643}
   EnemyScore: {fileID: 11400000, guid: ab7d722f6d5be4c4ea5059de7bdf47d9, type: 2}
-  minWaitTime: 0.1
-  maxWaitTime: 0.75
 --- !u!50 &9108196645631258013
 Rigidbody2D:
   serializedVersion: 4
@@ -555,8 +555,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9108196647179465734}
-  - component: {fileID: 9108196647179465784}
   - component: {fileID: 9108196647179465735}
+  - component: {fileID: 8470070825059972612}
   m_Layer: 0
   m_Name: ProximityTrigger
   m_TagString: Untagged
@@ -579,18 +579,6 @@ Transform:
   m_Father: {fileID: 9108196645631258011}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9108196647179465784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196647179465733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd00005fe4f21142baf3f71970da01e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &9108196647179465735
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -607,3 +595,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
+--- !u!114 &8470070825059972612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108196647179465733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e052743accc7a9408c8ad2b6b8f52c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

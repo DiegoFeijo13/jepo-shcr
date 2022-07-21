@@ -9,9 +9,9 @@ public class EnemyScore : ScriptableObject
     public List<EnemyKillCount> Score = new List<EnemyKillCount>();
     public int KillsInARow;
 
-    private Enemies _currentEnemy;
+    private EnemyType _currentEnemy;
 
-    public void UpdateKills(Enemies enemy)
+    public void UpdateKills(EnemyType enemy)
     {
         if (enemy == _currentEnemy)
             KillsInARow++;
@@ -24,7 +24,7 @@ public class EnemyScore : ScriptableObject
         UpdateList(enemy);
     }
 
-    private void UpdateList(Enemies enemy)
+    private void UpdateList(EnemyType enemy)
     {
         var killcount = Score.FirstOrDefault(x => x.Enemy == enemy);
         
@@ -38,6 +38,6 @@ public class EnemyScore : ScriptableObject
 [System.Serializable]
 public class EnemyKillCount
 {
-    public Enemies Enemy;
+    public EnemyType Enemy;
     public int Count;
 }

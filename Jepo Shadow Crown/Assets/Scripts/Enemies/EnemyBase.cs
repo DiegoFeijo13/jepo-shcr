@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBase : AttackableBase
 {
     [SerializeField] public int Level;
+    [SerializeField] protected EnemyType EnemyType;
     [SerializeField] protected int MaxHealth;
     [SerializeField] protected GameObject MainObject;
     [SerializeField] protected int Range;
@@ -20,6 +21,8 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected GameObject CollisionTrigger;
     [SerializeField] protected EnemyScore EnemyScore;
 
+    protected GameObject characterInRange;
+
     protected float _health;
 
     protected EnemyMovement movement;    
@@ -31,6 +34,8 @@ public class EnemyBase : AttackableBase
     protected Color _defaultColor;
     
     protected EnemyState CurrentState { get; set; }
+
+    protected bool IsDead { get; set; }
 
     private void Awake()
     {
@@ -123,12 +128,24 @@ public class EnemyBase : AttackableBase
             StartCoroutine(DeathFXCo(DelayDeathFX));
         }
 
-        MakeLoot();
+        if (!IsDead)
+        {
+            EnemyScore.UpdateKills(this.EnemyType);
+            MakeLoot();
+
+        }
 
         StartCoroutine(DestroyCo(DestroyDelayOnDeath));
+
+        IsDead = true;
     }
 
     #region Public Methods
+    public void SetCharacterInRange(GameObject characterInRange)
+    {
+        this.characterInRange = characterInRange;
+    }
+
     public override void OnHit(Vector2 pushDirection, ItemType itemType, float damage)
     {
         _health -= damage;

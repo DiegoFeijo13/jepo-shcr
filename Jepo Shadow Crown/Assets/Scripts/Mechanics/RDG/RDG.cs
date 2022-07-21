@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class RDG : MonoBehaviour
@@ -89,19 +90,24 @@ public class RDG : MonoBehaviour
                     roomSize = Random.Range(3, 6);
                 previousPos = new Vector2Int(x, y);
 
+                //Route positions
+                var positions = new HashSet<Vector3Int>();
+
                 //Go Straight
                 if (Random.Range(1, 100) <= levelControl.DeviationRate)
                 {
                     if (routeUsed)
                     {
-                        GenerateSquare(previousPos.x + xOffset, previousPos.y + yOffset, roomSize);
+                        var sqrPos = GenerateSquare(previousPos.x + xOffset, previousPos.y + yOffset, roomSize);
+                        positions.UnionWith(sqrPos);
                         NewRoute(previousPos.x + xOffset, previousPos.y + yOffset, Random.Range(routeLength, levelControl.MaxRouteLength), previousPos);
                     }
                     else
                     {
                         x = previousPos.x + xOffset;
                         y = previousPos.y + yOffset;
-                        GenerateSquare(x, y, roomSize);
+                        var sqrPos = GenerateSquare(x, y, roomSize);
+                        positions.UnionWith(sqrPos);
                         routeUsed = true;
                     }
                 }
@@ -111,14 +117,16 @@ public class RDG : MonoBehaviour
                 {
                     if (routeUsed)
                     {
-                        GenerateSquare(previousPos.x - yOffset, previousPos.y + xOffset, roomSize);
+                        var sqrPos = GenerateSquare(previousPos.x - yOffset, previousPos.y + xOffset, roomSize);
+                        positions.UnionWith(sqrPos);
                         NewRoute(previousPos.x - yOffset, previousPos.y + xOffset, Random.Range(routeLength, levelControl.MaxRouteLength), previousPos);
                     }
                     else
                     {
                         y = previousPos.y + xOffset;
                         x = previousPos.x - yOffset;
-                        GenerateSquare(x, y, roomSize);
+                        var sqrPos = GenerateSquare(x, y, roomSize);
+                        positions.UnionWith(sqrPos);
                         routeUsed = true;
                     }
                 }
@@ -127,14 +135,16 @@ public class RDG : MonoBehaviour
                 {
                     if (routeUsed)
                     {
-                        GenerateSquare(previousPos.x + yOffset, previousPos.y - xOffset, roomSize);
+                        var sqrPos = GenerateSquare(previousPos.x + yOffset, previousPos.y - xOffset, roomSize);
+                        positions.UnionWith(sqrPos);
                         NewRoute(previousPos.x + yOffset, previousPos.y - xOffset, Random.Range(routeLength, levelControl.MaxRouteLength), previousPos);
                     }
                     else
                     {
                         y = previousPos.y - xOffset;
                         x = previousPos.x + yOffset;
-                        GenerateSquare(x, y, roomSize);
+                        var sqrPos = GenerateSquare(x, y, roomSize);
+                        positions.UnionWith(sqrPos);
                         routeUsed = true;
                     }
                 }
@@ -143,13 +153,18 @@ public class RDG : MonoBehaviour
                 {
                     x = previousPos.x + xOffset;
                     y = previousPos.y + yOffset;
-                    GenerateSquare(x, y, roomSize);
+                    var sqrPos = GenerateSquare(x, y, roomSize);
+                    positions.UnionWith(sqrPos);
                 }
+
+                if(roomSize > 1)
+                    EnemyController.SpawnEnemies(positions, enemiesDB, levelControl.CurrentLevel);
             }
+
         }
     }
 
-    private void GenerateSquare(int x, int y, int radius)
+    private HashSet<Vector3Int> GenerateSquare(int x, int y, int radius)
     {
         HashSet<Vector3Int> positions = new HashSet<Vector3Int>();
 
@@ -164,11 +179,9 @@ public class RDG : MonoBehaviour
             }
         }
 
-        //If not a hallway
-        if(radius > 1)        
-            SpawnEnemies(positions);        
-
         PositionPortal(x,y);
+
+        return positions;
     }
 
     private void PositionPortal(int x, int y)
@@ -184,7 +197,7 @@ public class RDG : MonoBehaviour
         if (enemiesDB == null || levelControl == null)
             return;
 
-        int maxEnemies = Random.Range(levelControl.CurrentLevel - 1, levelControl.CurrentLevel + 1);
+        int maxEnemies = Random.Range(1, 2);
 
         int spawnedEnemies = 0;        
         var enemies = enemiesDB.GetEnemies(levelControl.CurrentLevel);
@@ -229,56 +242,10 @@ public class RDG : MonoBehaviour
 
     }
 
-    private void ClearData()
-    {
-        routeCount = 0;
-        ClearEnemies();
-        ClearObjects();
-        groundMap.ClearAllTiles();
-        wallMap.ClearAllTiles();
-        pitMap.ClearAllTiles();
-    }
-
-    private void ClearObjects()
-    {
-        var objects = GameObject.FindGameObjectsWithTag("Objects");
-
-        if (!objects.Any())
-            return;
-
-        foreach (var o in objects)
-        {
-            Destroy(o);
-
-        }
-
-        torches = new List<GameObject>();
-    }
-
-    private void ClearEnemies()
-    {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (!enemies.Any())
-            return;
-
-        foreach (var e in enemies)
-        {
-            Destroy(e);
-        }
-    }
-
-    private void PositionHero()
-    {
-        player.transform.position = new Vector3(0, 0);
-    }
-
     internal void NextLevel()
     {
         levelControl.LevelUp();
-        ClearData();
-        PositionHero();
-        Run();
+        SceneManager.LoadScene("Dungeon");
     }
 
     

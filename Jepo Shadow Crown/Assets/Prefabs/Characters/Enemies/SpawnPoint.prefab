@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 5
+  EnemyType: 0
   MaxHealth: 6
   MainObject: {fileID: 5850275285857391450}
   Range: 10
@@ -101,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7026209977235720508}
-  - component: {fileID: 4252498090018103950}
+  - component: {fileID: 3734288287866156862}
   - component: {fileID: 6479547960272548258}
   m_Layer: 0
   m_Name: ProximityTrigger
@@ -125,7 +126,7 @@ Transform:
   m_Father: {fileID: 5850275285857391444}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4252498090018103950
+--- !u!114 &3734288287866156862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6091578012377534685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19516fdc59df684b96196ad573f8a4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e052743accc7a9408c8ad2b6b8f52c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!58 &6479547960272548258

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class SkeletonControl : EnemyBase
 {
-    GameObject characterInRange;
-     
-    [SerializeField] private float minWaitTime = 0.1f;
-    [SerializeField] private float maxWaitTime = 0.75f;
+    //[SerializeField] private float minWaitTime = 0.1f;
+    //[SerializeField] private float maxWaitTime = 0.75f;
 
     private float moveTimeSeconds;
     private float minMoveTime = 1f;
@@ -24,13 +22,6 @@ public class SkeletonControl : EnemyBase
     private void Update()
     {
         UpdateDirection();
-    }
-
-    protected override void OnDie()
-    {
-        EnemyScore.UpdateKills(Enemies.Skeleton);
-
-        base.OnDie();
     }
 
     void UpdateDirection()
@@ -69,10 +60,7 @@ public class SkeletonControl : EnemyBase
         SetDirection(directionVector);
     }
 
-    public void SetCharacterInRange(GameObject characterInRange)
-    {
-        this.characterInRange = characterInRange;
-    }
+    
 
     public void Attack(GameObject character)
     {
