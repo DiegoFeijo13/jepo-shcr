@@ -21,8 +21,6 @@ public class Shooting : MonoBehaviour
 
         firePoint.rotation = Quaternion.Euler(BulletDirection());
 
-        UpdateLayer();
-
         if (Input.GetButton("Fire1") && playerMovement.CanAttack())
             Shoot();
         
@@ -46,25 +44,6 @@ public class Shooting : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
         return new Vector3(0, 0, angle);
-    }
-
-    void UpdateLayer()
-    {
-        Vector3 dir = playerMovement.GetFacingDirection();
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        Vector3 scale = weaponSprite.gameObject.transform.localScale;
-        scale.y = dir == Vector3.left ? -1 : 1;
-        weaponSprite.transform.localScale = scale;
-
-        if ((dir == Vector3.up || dir == Vector3.down) && mousePos.y > 0)
-        {
-            weaponSprite.sortingOrder = 40;
-        }
-        else
-        {
-            weaponSprite.sortingOrder = 60;
-        }
     }
 
     IEnumerator CooldownCo()
