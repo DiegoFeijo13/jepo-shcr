@@ -136,11 +136,6 @@ public class PlayerMovement : MonoBehaviour
         return !blockedStates.Contains(currentState);
     }
 
-    public void AutoMove(Vector3 dir, float seconds)
-    {
-        body.DOMove(body.transform.position + dir, seconds);
-    }
-
     public void Knock(Rigidbody2D myRigidbody, float knockTime)
     {
         StartCoroutine(KnockCo(myRigidbody, knockTime));
