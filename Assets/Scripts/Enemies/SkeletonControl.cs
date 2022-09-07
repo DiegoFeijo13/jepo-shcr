@@ -19,7 +19,7 @@ public class SkeletonControl : EnemyBase
         ChangeDirection();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateDirection();
     }

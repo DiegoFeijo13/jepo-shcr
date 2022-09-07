@@ -12,11 +12,9 @@ public class EnemySpawn : EnemyBase
     private int lastEnemyIndex;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
-    GameObject characterInRange;
     private bool canSpawn = true;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         RemoveDestroyed();
 
@@ -51,11 +49,6 @@ public class EnemySpawn : EnemyBase
     private bool CanSpawn()
     {
         return canSpawn && characterInRange != null && spawnedEnemies.Count < maxEnemies;
-    }
-
-    public void SetCharacterInRange(GameObject characterInRange)
-    {
-        this.characterInRange = characterInRange;
     }
 
     IEnumerator CooldownCo()

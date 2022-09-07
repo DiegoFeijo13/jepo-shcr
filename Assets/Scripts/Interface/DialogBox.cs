@@ -16,7 +16,7 @@ public class DialogBox : MonoBehaviour
         _textBox = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         if (CurrentDialog.IsActive)
             Show();

@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
 
     private bool canShoot = true;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (GameManager.Instance.IsPaused())
             return;

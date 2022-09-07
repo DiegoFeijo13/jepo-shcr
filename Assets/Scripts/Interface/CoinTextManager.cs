@@ -13,7 +13,7 @@ public class CoinTextManager : MonoBehaviour
         UpdateCoinCount();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateCoinCount();
     }

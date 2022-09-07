@@ -22,7 +22,7 @@ namespace Assets.Scripts.Objects
             lifetimeCounter = lifetime;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             lifetimeCounter -= Time.deltaTime;
             if (lifetimeCounter <= 0)

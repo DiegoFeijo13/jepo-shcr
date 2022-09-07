@@ -24,11 +24,6 @@ public class InteractableTorch : InteractableBase
             spriteRenderer.sprite = unlitSprite;
     }
 
-    void Update()
-    {
-        UpdateInteract();
-        
-    }
 
     public override void InteractInternal()
     {

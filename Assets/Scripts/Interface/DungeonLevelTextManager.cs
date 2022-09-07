@@ -13,7 +13,7 @@ public class DungeonLevelTextManager : MonoBehaviour
         UpdateLevelText();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateLevelText();
     }

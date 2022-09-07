@@ -8,7 +8,7 @@ public class InteractableSign : InteractableBase
     public Dialog CurrentDialog;
     public string Dialog;
 
-    private void Update()
+    void FixedUpdate()
     {
         UpdateInteract();
     }

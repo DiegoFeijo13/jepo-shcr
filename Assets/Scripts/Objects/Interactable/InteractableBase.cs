@@ -14,6 +14,12 @@ public class InteractableBase : MonoBehaviour
         UpdateContextClue();
     }
 
+    void Update()
+    {
+        UpdateInteract();
+
+    }
+
     protected void UpdateContextClue()
     {
         if (contextClue == null)
