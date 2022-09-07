@@ -13,7 +13,7 @@ public class KeyTextManager : MonoBehaviour
         UpdateKeyCount();
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         UpdateKeyCount();
     }

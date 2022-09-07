@@ -20,7 +20,7 @@ public class Trap : MonoBehaviour
             _defaultSprite = SpriteRenderer.sprite;
     }
 
-    private void Update()
+    void FixedUpdate()
     {
         if (_active)
         {

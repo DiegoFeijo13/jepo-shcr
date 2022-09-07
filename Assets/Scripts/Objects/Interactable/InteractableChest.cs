@@ -23,7 +23,7 @@ public class InteractableChest : InteractableBase
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         UpdateInteract();
     }

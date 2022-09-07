@@ -19,7 +19,7 @@ public class InteractableDoor : InteractableBase
 
     public DoorType Type => thisDoorType;
 
-    void Update()
+    void FixedUpdate()
     {
         UpdateInteract();
     }

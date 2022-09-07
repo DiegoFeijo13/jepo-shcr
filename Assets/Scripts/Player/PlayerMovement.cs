@@ -30,14 +30,11 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-    }
 
-    private void FixedUpdate()
-    {
         if (movement == Vector2.zero)
             SetDirection(Vector2.zero);
         else
