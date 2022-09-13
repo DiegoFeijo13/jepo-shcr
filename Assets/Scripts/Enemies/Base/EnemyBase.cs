@@ -141,6 +141,11 @@ public class EnemyBase : AttackableBase
     }
 
     #region Public Methods
+    public virtual void Attack(GameObject character)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void SetCharacterInRange(GameObject characterInRange)
     {
         this.characterInRange = characterInRange;

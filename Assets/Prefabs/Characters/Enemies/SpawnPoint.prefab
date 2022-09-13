@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 5
-  EnemyType: 0
+  EnemyType: 2
   MaxHealth: 6
   MainObject: {fileID: 5850275285857391450}
   Range: 10

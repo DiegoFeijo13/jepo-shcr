@@ -17,6 +17,7 @@ public class RDG : MonoBehaviour
     [SerializeField] private Tilemap wallMap;
     [SerializeField] private GameObject player;
     [SerializeField] private EnemiesDataBase enemiesDB;
+    [SerializeField] private EnemySpawnPoint enemySpawnPoint;
     [SerializeField] private DungeonLevelControl levelControl;
     [SerializeField] private GameObject torch;
     [SerializeField] private GameObject nextLevelPortal;
@@ -158,7 +159,7 @@ public class RDG : MonoBehaviour
                 }
 
                 if(roomSize > 1)
-                    EnemyController.SpawnEnemies(positions, enemiesDB, levelControl.CurrentLevel);
+                    EnemyController.SpawnEnemies(positions, enemiesDB, enemySpawnPoint, levelControl.CurrentLevel);
             }
 
         }
@@ -190,34 +191,6 @@ public class RDG : MonoBehaviour
             return;
 
         nextLevelPortal.transform.position = new Vector3(x + 0.5f, y + 0.5f);
-    }
-
-    private void SpawnEnemies(HashSet<Vector3Int> positions)
-    {
-        if (enemiesDB == null || levelControl == null)
-            return;
-
-        int maxEnemies = Random.Range(1, 2);
-
-        int spawnedEnemies = 0;        
-        var enemies = enemiesDB.GetEnemies(levelControl.CurrentLevel);
-        
-        if ((enemies?.Count).GetValueOrDefault() == 0)
-            return;
-
-        while(spawnedEnemies < maxEnemies)
-        {
-            int rndPos = Random.Range(1, positions.Count);
-            int rndEnemy = Random.Range(0, enemies.Count);
-            var pos = positions.ElementAt(rndPos);
-            var v3pos = new Vector3(pos.x, pos.y);
-            var enemy = enemies.ElementAt(rndEnemy);
-            
-            var enemyObject = Instantiate(enemy, v3pos, this.gameObject.transform.rotation);
-
-            spawnedEnemies++;
-        }
-
     }
 
     private void SpawnTorch(Vector3Int position)
