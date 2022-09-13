@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public static void SpawnEnemies(HashSet<Vector3Int> positions, EnemiesDataBase db, int dgLevel)
+    public static void SpawnEnemies(HashSet<Vector3Int> positions, EnemiesDataBase db, EnemySpawnPoint enemySpawnPoint, int dgLevel)
     {
         if (positions == null || positions.Count == 0 || db == null)
             return;
@@ -25,9 +25,9 @@ public class EnemyController : MonoBehaviour
             var pos = positions.ElementAt(rndPos);
             var v3pos = new Vector3(pos.x, pos.y);
             var enemy = enemies.ElementAt(rndEnemy);
-
             var rotation = new Quaternion(0, 0, 0, 0);
-            var enemyObject = Instantiate(enemy, v3pos, rotation);
+            enemySpawnPoint.enemy = enemy;
+            var enemyObject = Instantiate(enemySpawnPoint, v3pos, rotation);
 
             spawnedEnemies++;
         }

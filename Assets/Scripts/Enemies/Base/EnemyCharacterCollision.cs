@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyCharacterCollision : MonoBehaviour
 {
-    SkeletonControl _skeletonControl;
+    EnemyBase enemyBase;
 
     private void Awake()
     {
-        _skeletonControl = GetComponentInParent<SkeletonControl>();
+        enemyBase = GetComponentInParent<EnemyBase>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player") && collider.isTrigger)
         {
-            _skeletonControl.Attack(collider.gameObject);
+            enemyBase.Attack(collider.gameObject);
         }
     }
 }

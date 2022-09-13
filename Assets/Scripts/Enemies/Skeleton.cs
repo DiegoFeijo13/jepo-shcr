@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonControl : EnemyBase
+public class Skeleton : EnemyBase
 {
-    //[SerializeField] private float minWaitTime = 0.1f;
-    //[SerializeField] private float maxWaitTime = 0.75f;
-
     private float moveTimeSeconds;
     private float minMoveTime = 1f;
     private float maxMoveTime = 1.75f;
@@ -62,7 +59,7 @@ public class SkeletonControl : EnemyBase
 
     
 
-    public void Attack(GameObject character)
+    public override void Attack(GameObject character)
     {
         if (CurrentState != EnemyState.attacking)
         {

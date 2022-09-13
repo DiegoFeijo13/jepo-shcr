@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Assets.Scripts.Enums;
 
-public enum PlayerState
-{
-    idle,
-    walking,
-    interacting,
-    attacking,
-    frozen
-}
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
