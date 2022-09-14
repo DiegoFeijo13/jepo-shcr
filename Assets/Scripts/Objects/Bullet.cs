@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using UnityEngine;
+using Assets.Scripts.General;
 
 namespace Assets.Scripts.Objects
 {
     public class Bullet : MonoBehaviour
     {
-        public float damage = 1f;
-        public float lifetime;
-        public float thrust = 4f;        
-        public float knockTime = 0.3f;
+        [Header("Status")]
+        [SerializeField] private int minDamage = 30;
+        [SerializeField] private int maxDamage = 100;
+
+        [Header("Visual")]
+        [SerializeField] private float lifetime;
+        [SerializeField] private float knockTime = 0.3f;
 
         private float lifetimeCounter;
 
@@ -38,7 +37,8 @@ namespace Assets.Scripts.Objects
                 var enemyBase = collision.gameObject.GetComponent<EnemyBase>();
                 if (enemyBase != null)
                 {
-                    enemyBase.OnHit(gameObject.transform.position, ItemType.Bullet, damage);
+                    int damage = Calculator.CalculateDamage(minDamage,maxDamage);
+                    enemyBase.OnHit(gameObject.transform.position, ItemType.Bullet, damage, Calculator.IsLastRollCritical);
                 }
 
                 StartCoroutine(KnockCo(collision.gameObject));
@@ -52,15 +52,16 @@ namespace Assets.Scripts.Objects
             }
         }
 
+
         private IEnumerator KnockCo(GameObject obj)
         {
             var body = obj.GetComponent<Rigidbody2D>();
-            //var baseMovementModel = collision.gameObject.GetComponent<BaseMovementModel>();
+
             if (body != null)
             {
                 yield return new WaitForSeconds(knockTime);
                 body.velocity = Vector2.zero;
-                //baseMovementModel.CurrentState = MovementState.idle;
+
             }
         }
 

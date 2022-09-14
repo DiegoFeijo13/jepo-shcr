@@ -69,7 +69,9 @@ public class PauseMenu : MonoBehaviour
             StringBuilder sb = new();
             foreach (var score in PlayerEnemyScore.Score)
             {
-                sb.AppendLine($"{score.Enemy.GetDescription()}: {score.Count}");
+                string enemyName = score.Key.GetDescription();
+                
+                sb.AppendLine($"{enemyName}: {score.Value}");
             }
 
             EnemyScoreText.text = sb.ToString();

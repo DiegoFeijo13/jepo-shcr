@@ -312,8 +312,9 @@ MonoBehaviour:
   DestroyDelayOnDeath: 0.4
   DeathFX: {fileID: 8051817626491401430, guid: d314d0a39b7a5e14f8a9d265e4d8ac46, type: 3}
   DelayDeathFX: 0
-  DamagePerHit: 1
-  Bounds: {fileID: 0}
+  MinDamage: 20
+  MaxDamage: 100
+  Bounds: {fileID: 2488960124824205763}
   LootTable: {fileID: 11400000, guid: 2fdaaa7657933d64f9c336f62600fa71, type: 2}
   Visuals: {fileID: 9108196647046866998}
   CollisionTrigger: {fileID: 9108196645653207643}

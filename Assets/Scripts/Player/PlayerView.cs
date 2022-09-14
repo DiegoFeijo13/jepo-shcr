@@ -1,11 +1,12 @@
-﻿using Assets.Scripts.Objects;
+﻿using Assets.Scripts.General;
+using Assets.Scripts.Objects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerView : MonoBehaviour
-{    
+{
     [SerializeField] private GameObject visuals;
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D triggerCollider;
@@ -51,8 +52,11 @@ public class PlayerView : MonoBehaviour
         animator.SetBool("isMoving", movementModel.IsMoving());
     }
 
-    public void TakeHit()
+    public void TakeHit(int damage, bool isCritical)
     {
+
+        TextPopup.ShowDamage(damage, transform.position, isCritical);
+
         StartCoroutine(TakeHitCo());
     }
 
@@ -72,5 +76,5 @@ public class PlayerView : MonoBehaviour
         }
         triggerCollider.enabled = true;
     }
-    
+
 }
