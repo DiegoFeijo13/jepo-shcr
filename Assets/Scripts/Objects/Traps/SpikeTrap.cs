@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.General;
 using UnityEngine;
 
 public class SpikeTrap : Trap
 {
     public override void Hit()
     {
-        Debug.Log("hit " + DamagePerHit);
         if(_character != null && _canHit)
         {
-            _character.DealDamage(DamagePerHit);
+            var damage = Calculator.CalculateDamage(minDamage, maxDamage);            
+            _character.DealDamage(damage, Calculator.IsLastRollCritical);
 
             StartCoroutine(CooldownCO());
         }

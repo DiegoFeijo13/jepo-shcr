@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class EnemyScore : ScriptableObject
 {
-    public List<EnemyKillCount> Score = new List<EnemyKillCount>();
+    public Dictionary<EnemyType, int> Score = new Dictionary<EnemyType, int>();
     public int KillsInARow;
 
     private EnemyType _currentEnemy;
+
+    private void Reset()
+    {
+        Score = new Dictionary<EnemyType, int>();
+    }
 
     public void UpdateKills(EnemyType enemy)
     {
@@ -21,23 +25,18 @@ public class EnemyScore : ScriptableObject
             KillsInARow = 1;
         }
 
-        UpdateList(enemy);
+        UpdateScore(enemy);
     }
 
-    private void UpdateList(EnemyType enemy)
+    private void UpdateScore(EnemyType enemy)
     {
-        var killcount = Score.FirstOrDefault(x => x.Enemy == enemy);
-        
-        if (killcount != null)
-            killcount.Count++;
+        if(Score.TryGetValue(enemy, out int scoreValue))
+        {
+            Score[enemy] = scoreValue + 1;
+        }
         else
-            Score.Add(new EnemyKillCount { Enemy = enemy, Count = 1 });
+        {
+            Score.Add(enemy, 1);
+        }
     }
-}
-
-[System.Serializable]
-public class EnemyKillCount
-{
-    public EnemyType Enemy;
-    public int Count;
 }

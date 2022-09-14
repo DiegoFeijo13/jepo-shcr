@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public float DamagePerHit;
-    public float Cooldown;
-    public SpriteRenderer SpriteRenderer;
-    public Sprite ActiveSprite;    
+    [SerializeField] protected int minDamage;
+    [SerializeField] protected int maxDamage;
+    [SerializeField] protected float Cooldown;
+    [SerializeField] protected SpriteRenderer SpriteRenderer;
+    [SerializeField] protected Sprite ActiveSprite;    
 
     protected bool _canHit;
     protected bool _active;

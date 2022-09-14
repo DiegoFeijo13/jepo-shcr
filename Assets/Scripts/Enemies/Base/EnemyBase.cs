@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.General;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,8 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected float DestroyDelayOnDeath;
     [SerializeField] protected GameObject DeathFX;
     [SerializeField] protected float DelayDeathFX;
-    [SerializeField] protected float DamagePerHit;
+    [SerializeField] protected int MinDamage;
+    [SerializeField] protected int MaxDamage;
     [SerializeField] protected BoxCollider2D Bounds;
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
@@ -34,8 +36,6 @@ public class EnemyBase : AttackableBase
     protected Color _defaultColor;
     
     protected EnemyState CurrentState { get; set; }
-
-    protected bool IsDead { get; set; }
 
     private void Awake()
     {
@@ -128,20 +128,14 @@ public class EnemyBase : AttackableBase
             StartCoroutine(DeathFXCo(DelayDeathFX));
         }
 
-        if (!IsDead)
-        {
-            EnemyScore.UpdateKills(this.EnemyType);
-            MakeLoot();
-
-        }
-
+        EnemyScore.UpdateKills(this.EnemyType);
+        MakeLoot();
+        
         StartCoroutine(DestroyCo(DestroyDelayOnDeath));
-
-        IsDead = true;
     }
 
     #region Public Methods
-    public virtual void Attack(GameObject character)
+    public virtual void OnAttack(GameObject character)
     {
         throw new System.NotImplementedException();
     }
@@ -151,18 +145,11 @@ public class EnemyBase : AttackableBase
         this.characterInRange = characterInRange;
     }
 
-    public override void OnHit(Vector2 pushDirection, ItemType itemType, float damage)
+    public override void OnHit(Vector2 pushDirection, ItemType itemType, int damage, bool isCritical)
     {
         _health -= damage;
 
-        StartCoroutine(HitEffectCo(0.2f));
-
-        if (movement != null)
-        {
-            pushDirection = pushDirection.normalized * HitPushStrength;
-
-            //_movementModel.PushCharacter(pushDirection, HitPushDuration);
-        }
+        StartCoroutine(HitEffectCo(0.2f, damage, isCritical));
 
         if (_health <= 0)
         {
@@ -192,21 +179,30 @@ public class EnemyBase : AttackableBase
 
     IEnumerator DeathFXCo(float delay)
     {
-        
-
         yield return new WaitForSeconds(delay);
 
         Instantiate(DeathFX, base.transform.position, Quaternion.identity, MainObject.transform);
     }
 
-    IEnumerator HitEffectCo(float delay)
+    IEnumerator HitEffectCo(float delay, int damage, bool isCritical)
     {
         if (_spriteRenderer == null)
             yield break;
 
         _spriteRenderer.color = Color.red;
+        var collider = gameObject.GetComponent<BoxCollider2D>();
+        if(collider != null)
+            collider.enabled = false;
+        
+        TextPopup.ShowDamage(damage, transform.position, isCritical);
+
         yield return new WaitForSeconds(delay);
         _spriteRenderer.color = _defaultColor;
+
+        if (collider != null && _health > 0)
+            collider.enabled = true;
+
+
     }
     #endregion Coroutines
 }

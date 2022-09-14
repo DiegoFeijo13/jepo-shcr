@@ -12,7 +12,7 @@ public class EnemySpawnPoint : MonoBehaviour
         {
             //TODO: play spawn animation
             var enemyObject = Instantiate(enemy, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            Debug.Log(enemy);
+            
             StartCoroutine(DestroyCO());
         }
     }

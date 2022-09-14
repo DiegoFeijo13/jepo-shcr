@@ -7,6 +7,7 @@ TagManager:
   - Objects
   - Enemy
   - Walls
+  - PlayerSpawnTrigger
   layers:
   - Default
   - TransparentFX

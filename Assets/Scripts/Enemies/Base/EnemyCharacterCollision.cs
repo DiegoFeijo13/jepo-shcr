@@ -15,7 +15,7 @@ public class EnemyCharacterCollision : MonoBehaviour
     {
         if (collider.CompareTag("Player") && collider.isTrigger)
         {
-            enemyBase.Attack(collider.gameObject);
+            enemyBase.OnAttack(collider.gameObject);
         }
     }
 }

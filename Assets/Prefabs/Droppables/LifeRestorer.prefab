@@ -157,4 +157,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: 11400000, guid: 2d12d50a468bd6a45bf9f497eae2e823, type: 2}
-  amountToIncrease: 5
+  minToRestore: 25
+  maxToRestore: 50
