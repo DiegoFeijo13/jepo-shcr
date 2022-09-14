@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 6133752290657160146}
   - component: {fileID: 8571660763774172693}
   - component: {fileID: 7017133798481599655}
+  - component: {fileID: 2111835911906115152}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Objects
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eb390fd3e97734eb36e36732d2c4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttractable: 1
   PlayerInventory: {fileID: 11400000, guid: b84f6bacfb2c59c47a531519073c1bc2, type: 2}
   Amount: 1
 --- !u!61 &7017133798481599655
@@ -179,3 +181,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &2111835911906115152
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389851887367582955}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
