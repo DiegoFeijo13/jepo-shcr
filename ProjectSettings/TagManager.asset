@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Walls
   - PlayerSpawnTrigger
+  - PlayerMagnetCollider
   layers:
   - Default
   - TransparentFX

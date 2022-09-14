@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Key : DroppableItem
 {
-    public Inventory PlayerInventory;    
+    [SerializeField] private Inventory PlayerInventory;    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
