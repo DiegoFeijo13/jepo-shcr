@@ -7,14 +7,14 @@ using UnityEngine;
 public class DungeonLevelControl : ScriptableObject
 {
     public int CurrentLevel = 1;
-    public int DeviationRate = 10;
+    public int DeviationRate = 3;
     public int RoomRate = 15;
     public int MaxRouteLength = 50;
     public int MaxRoutes = 10;    
     
     private readonly int _initialLevel = 1;
-    private readonly int _initialDeviationRate = 5;
-    private readonly int _initialRoomRate = 15;
+    private readonly int _initialDeviationRate = 3;
+    private readonly int _initialRoomRate = 100;
     private readonly int _initialMaxRouteLength = 50;
     private readonly int _initialMaxRoutes = 20;
 
@@ -39,9 +39,6 @@ public class DungeonLevelControl : ScriptableObject
     internal void LevelUp()
     {
         CurrentLevel++;
-        //DeviationRate += CurrentLevel;
-        //RoomRate += CurrentLevel;
         MaxRouteLength += CurrentLevel * 2;
-        //MaxRoutes += CurrentLevel;
     }
 }

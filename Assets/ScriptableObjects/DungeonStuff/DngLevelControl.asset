@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DngLevelControl
   m_EditorClassIdentifier: 
   CurrentLevel: 1
-  DeviationRate: 5
-  RoomRate: 15
+  DeviationRate: 3
+  RoomRate: 100
   MaxRouteLength: 50
   MaxRoutes: 20
