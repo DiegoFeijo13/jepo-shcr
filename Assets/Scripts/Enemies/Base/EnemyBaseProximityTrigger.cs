@@ -15,7 +15,7 @@ public class EnemyBaseProximityTrigger : MonoBehaviour
     {
         if (collider.CompareTag("Player") && collider.isTrigger)
         {
-            control.SetCharacterInRange(collider.gameObject);
+            control.CharacterInRange = collider.gameObject;
         }
     }
 
@@ -23,7 +23,7 @@ public class EnemyBaseProximityTrigger : MonoBehaviour
     {
         if (collider.CompareTag("Player") && collider.isTrigger)
         {
-            control.SetCharacterInRange(null);
+            control.CharacterInRange = null;
         }
     }
 }

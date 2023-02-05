@@ -175,10 +175,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692484866691127596, guid: 92b49495d1ade2b45b890c43fa555489, type: 3}
-      propertyPath: levelControl
-      value: 
-      objectReference: {fileID: 11400000, guid: 9754b2f4c6d8d1049882c1db1fbddfd4, type: 2}
-    - target: {fileID: 3692484866691127596, guid: 92b49495d1ade2b45b890c43fa555489, type: 3}
       propertyPath: dungeonGenerator
       value: 
       objectReference: {fileID: 787032493}
@@ -383,18 +379,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1509458110510008842, guid: 695b7429bdec4ff42930ab52dbc5da86, type: 3}
-      propertyPath: EnemiesDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 9cf66b6dc6f29864887337d78afd0468, type: 2}
-    - target: {fileID: 1509458110510008842, guid: 695b7429bdec4ff42930ab52dbc5da86, type: 3}
-      propertyPath: EnemySpawnPoint
-      value: 
-      objectReference: {fileID: 3232356575951774138, guid: 1b7d5af42de07e04d9c057d8c5581e7c, type: 3}
-    - target: {fileID: 1509458110510008842, guid: 695b7429bdec4ff42930ab52dbc5da86, type: 3}
-      propertyPath: ObjectsDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 831f5c1e9b1551d49a1d4645789bbbcb, type: 2}
     - target: {fileID: 1509458110510008843, guid: 695b7429bdec4ff42930ab52dbc5da86, type: 3}
       propertyPath: m_Name
       value: GameAssets

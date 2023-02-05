@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.General;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,20 +18,20 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected float DelayDeathFX;
     [SerializeField] protected int MinDamage;
     [SerializeField] protected int MaxDamage;
-    [SerializeField] protected BoxCollider2D Bounds;
+    //[SerializeField] protected BoxCollider2D Bounds;
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
     [SerializeField] protected GameObject CollisionTrigger;
     [SerializeField] protected EnemyScore EnemyScore;
 
-    protected GameObject characterInRange;
+    internal GameObject CharacterInRange;
 
     protected float _health;
 
     protected EnemyMovement movement;    
 
     protected Vector3 startPos;
-    protected Vector2 directionVector;
+    //protected Vector2 directionVector;
 
     protected SpriteRenderer _spriteRenderer;
     protected Color _defaultColor;
@@ -50,57 +51,6 @@ public class EnemyBase : AttackableBase
         if (MainObject != null)
         {
             startPos = MainObject.transform.position;
-        }
-    }
-
-    protected void SetDirection(Vector2 direction)
-    {
-        if (movement == null)
-            return;
-
-        if (Bounds != null)
-        {
-            Vector2 temp = (Vector2)transform.position + movement.GetSpeed * Time.deltaTime * direction;
-            if (!Bounds.bounds.Contains(temp))
-            {
-                ChooseDifferentDirection();
-                return;
-            }
-        }        
-        movement.SetDirection(direction);
-    }
-
-    protected void ChooseDifferentDirection()
-    {
-        Vector2 temp = directionVector;
-        ChangeDirection();
-        int loops = 0;
-        while (temp == directionVector && loops < 100)
-        {
-            loops++;
-            ChangeDirection();
-        }
-    }
-
-    protected void ChangeDirection()
-    {
-        int direction = Random.Range(0, 4);
-        switch (direction)
-        {
-            case 0:
-                directionVector = Vector2.right;
-                break;
-            case 1:
-                directionVector = Vector2.up;
-                break;
-            case 2:
-                directionVector = Vector2.left;
-                break;
-            case 3:
-                directionVector = Vector2.down;
-                break;
-            default:
-                break;
         }
     }
 
@@ -140,11 +90,6 @@ public class EnemyBase : AttackableBase
         throw new System.NotImplementedException();
     }
 
-    public void SetCharacterInRange(GameObject characterInRange)
-    {
-        this.characterInRange = characterInRange;
-    }
-
     public override void OnHit(Vector2 pushDirection, ItemType itemType, int damage, bool isCritical)
     {
         _health -= damage;
@@ -173,7 +118,6 @@ public class EnemyBase : AttackableBase
     {
         yield return new WaitForSeconds(delay);
 
-        //MainObject.SetActive(false);
         Destroy(MainObject);
     }
 
@@ -204,5 +148,7 @@ public class EnemyBase : AttackableBase
 
 
     }
+
+    internal float GetHealth() => _health;
     #endregion Coroutines
 }

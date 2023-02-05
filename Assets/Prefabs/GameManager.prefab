@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3692484866691127596
 MonoBehaviour:
@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27429917ccf933e46a3932550fb961fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelControl: {fileID: 11400000, guid: 9754b2f4c6d8d1049882c1db1fbddfd4, type: 2}
+  dungeonGenerator: {fileID: 0}

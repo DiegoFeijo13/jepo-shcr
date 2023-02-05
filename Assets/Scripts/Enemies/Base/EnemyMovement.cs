@@ -5,25 +5,77 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private BoxCollider2D bounds;
 
     protected EnemyState CurrentState { get; set; }
     protected Vector3 movementDirection;
     protected Vector3 facingDirection;
 
     private Rigidbody2D body;
+    private Vector2 directionVector;
 
-    public float GetSpeed => speed;
+    private float moveTimeSeconds;
+    private float minMoveTime = 1f;
+    private float maxMoveTime = 1.75f;
+    private float waitTimeSeconds;
+
+    private EnemyBase enemyBase;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        enemyBase = GetComponent<EnemyBase>();
+    }
+
+    private void Start()
+    {
+        moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+        waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+        ChangeDirection();
     }
 
     private void FixedUpdate()
     {
-        SetDirection(movementDirection);
+        SetDirectionInternal(movementDirection);
 
         UpdateMovement();
+        UpdateDirection();
+    }
+
+    void UpdateDirection()
+    {
+        if (CurrentState == EnemyState.walking)
+        {
+            moveTimeSeconds -= Time.deltaTime;
+            if (moveTimeSeconds <= 0)
+            {
+                moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+                CurrentState = EnemyState.idle;
+            }
+
+            if (enemyBase.CharacterInRange != null)
+            {
+                directionVector = enemyBase.CharacterInRange.transform.position - transform.position;
+                directionVector.Normalize();
+            }
+        }
+        else
+        {
+            waitTimeSeconds -= Time.deltaTime;
+            if (waitTimeSeconds <= 0)
+            {
+                ChooseDifferentDirection();
+                CurrentState = EnemyState.walking;
+                waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
+            }
+        }
+
+        if (enemyBase.GetHealth() <= 0)
+        {
+            directionVector = Vector2.zero;
+        }
+
+        SetDirection(directionVector);
     }
 
     private void UpdateMovement()
@@ -55,8 +107,25 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    #region Public Methods
-    public void SetDirection(Vector2 direction)
+    private void ChooseDifferentDirection()
+    {
+        Vector2 temp = directionVector;
+        ChangeDirection();
+        int loops = 0;
+        while (temp == directionVector && loops < 100)
+        {
+            loops++;
+            ChangeDirection();
+        }
+    }
+
+    private void ChangeDirection()
+    {
+        Vector2[] directions = { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+        directionVector = directions[Random.Range(0, directions.Length)];
+    }
+
+    protected void SetDirectionInternal(Vector2 direction)
     {
         if (CurrentState == EnemyState.frozen || CurrentState == EnemyState.attacking)
             return;
@@ -66,32 +135,22 @@ public class EnemyMovement : MonoBehaviour
             facingDirection = movementDirection;
     }
 
-    public Vector3 GetDirection()
+    private void SetDirection(Vector2 direction)
     {
-        return movementDirection;
+        if (bounds != null)
+        {
+            Vector2 temp = (Vector2)transform.position + speed * Time.deltaTime * direction;
+            if (!bounds.bounds.Contains(temp))
+            {
+                ChooseDifferentDirection();
+                return;
+            }
+        }
+        SetDirectionInternal(direction);
     }
 
-    public bool IsMoving()
-    {
-        return movementDirection != Vector3.zero;
-    }
-
-    public void Knock(Rigidbody2D myRigidbody, float knockTime)
-    {
-        StartCoroutine(KnockCo(myRigidbody, knockTime));
-    }
+    #region Public Methods
+    internal bool IsMoving() => movementDirection != Vector3.zero;
     #endregion Public Methods
 
-    #region Coroutines
-    IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
-    {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            CurrentState = EnemyState.idle;
-            myRigidbody.velocity = Vector2.zero;
-        }
-    }
-    #endregion Coroutines
 }

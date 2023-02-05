@@ -48,7 +48,7 @@ public class EnemySpawn : EnemyBase
 
     private bool CanSpawn()
     {
-        return canSpawn && characterInRange != null && spawnedEnemies.Count < maxEnemies;
+        return canSpawn && CharacterInRange != null && spawnedEnemies.Count < maxEnemies;
     }
 
     IEnumerator CooldownCo()
