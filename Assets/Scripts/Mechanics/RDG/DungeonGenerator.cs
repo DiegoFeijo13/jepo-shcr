@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Random = UnityEngine.Random;
 
 public class DungeonGenerator : MonoBehaviour
 {
     [Header("Dungeon Stuff")]
-    [SerializeField] private int mainPathRooms = 5;
-    [SerializeField] private int deviation = 1;
-    [SerializeField] private DungeonCursor roomSpawnPoint;
+    [SerializeField] private DungeonLevelControl levelControl;
+    [SerializeField] private EnemiesDatabase enemiesDB;
+    [SerializeField] private GameObject portal;
 
     [Header("Room Stuff")]
     [SerializeField] private GameObject roomPrefab;
@@ -42,15 +41,14 @@ public class DungeonGenerator : MonoBehaviour
         _cursor = new(_dngConfig.StepSize());
         _spawnPositions = new List<Vector3>();
 
-        Run();
     }
 
-    private void Run()
+    internal void Run()
     {
         LoadStartRoom();
         BuildMainPath();
         LoadExitRoom();
-        if (deviation > 1)
+        if (levelControl.DeviationRate > 1)
             BuildAlternativePath();
         CloseRooms();
     }
@@ -59,7 +57,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         _cursor.Position = Vector3.zero;
 
-        var room = CreateRoom();
+        var room = CreateRoom(hasEnemies:false);
         UpdatePositions(room);
     }
 
@@ -69,7 +67,7 @@ public class DungeonGenerator : MonoBehaviour
         int pathRooms = 0;
         int failChances = 1000;
 
-        while (pathRooms < mainPathRooms)
+        while (pathRooms < levelControl.MainPathRoomRate)
         {
             _cursor.Move();
 
@@ -105,6 +103,8 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         UpdatePositions(room);
+
+        Instantiate(portal,new Vector3(_cursor.Position.x + 0.5f, _cursor.Position.y + 0.5f), Quaternion.identity);
     }
 
     private void BuildAlternativePath()
@@ -116,7 +116,7 @@ public class DungeonGenerator : MonoBehaviour
 
         //Given the deviation, loop and generate a room for each position
         int initialDeviation = 0;
-        while (initialDeviation < deviation)
+        while (initialDeviation < levelControl.DeviationRate)
         {
             List<Vector3> newPositions = new();
 
@@ -149,7 +149,7 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    private Room CreateRoom(bool isDeadEnd = false)
+    private Room CreateRoom(bool isDeadEnd = false, bool hasEnemies = true)
     {
         if (RoomManager.GetRoom(_cursor.Position) != null)
         {
@@ -166,7 +166,7 @@ public class DungeonGenerator : MonoBehaviour
 
         var newRoom = Instantiate(roomPrefab, _cursor.Position, Quaternion.identity);
         var roomGenerator = newRoom.GetComponent<Room>();
-        roomGenerator.FillRoom(roomExits, _dngConfig);
+        roomGenerator.FillRoom(roomExits, _dngConfig, hasEnemies);
 
         return roomGenerator;
     }

@@ -2,6 +2,7 @@ using Assets.Scripts.Mechanics.RDG;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
@@ -15,13 +16,15 @@ public class Room : MonoBehaviour
     private RoomExits _roomExits;
     private bool isDone;
 
-    public void FillRoom(RoomExits roomExits, DungeonConfig dngConfig)
+    public void FillRoom(RoomExits roomExits, DungeonConfig dngConfig, bool hasEnemies = true)
     {
         _dngConfig = dngConfig;
         _roomExits = roomExits;
         FillFloor();
         FillWalls();
-
+        if(hasEnemies)
+            SpawnEnemies();
+        SpawnObjects();
         isDone = true;
     }
 
@@ -35,7 +38,7 @@ public class Room : MonoBehaviour
         if (_roomExits.HasTopExit())
         {
             var pos = new Vector3(this.transform.position.x, this.transform.position.y + stepSize);
-            if(RoomManager.GetRoom(pos) == null)
+            if (RoomManager.GetRoom(pos) == null)
                 positions.Add(pos);
         }
 
@@ -117,6 +120,16 @@ public class Room : MonoBehaviour
             if (!IsPositionNegative(tileBottomPos))
                 wallMap.SetTile(tileBottomPos, _dngConfig.BotWallTile);
         }
+    }
+
+    private void SpawnEnemies()
+    {
+        EnemyController.SpawnEnemies(this.transform.position, _dngConfig.RoomRadius);
+    }
+
+    private void SpawnObjects()
+    {
+        ObjectController.SpawnWallObject(this.transform.position, _dngConfig.RoomRadius);
     }
 
     private void GetNegativePositions(int topWallY, int rightWallX, int bottomWallY, int leftWallX)
