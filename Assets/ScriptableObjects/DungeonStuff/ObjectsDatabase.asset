@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c02b0b7f2dba7340976b4d24547eb98, type: 3}
-  m_Name: EnemiesDatabase
+  m_Script: {fileID: 11500000, guid: 622ea70fe8e30ab44b45dcc63f8ea248, type: 3}
+  m_Name: ObjectsDatabase
   m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 5850275285857391450, guid: 42e438199c2cf514d8662cd16cc235cc, type: 3}
-  - {fileID: 9108196645631258010, guid: 663d6d284798b2a4a875b3da0a994a4e, type: 3}
+  WallObjects:
+  - {fileID: 3807057286243133531, guid: 1c7960c78db49d040b11ce5159cb32eb, type: 3}
+  FloorObjects: []

@@ -55,6 +55,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void LoadStartRoom()
     {
+
         _cursor.Position = Vector3.zero;
 
         var room = CreateRoom(hasEnemies:false);

@@ -30,13 +30,18 @@ public class GameManager : MonoBehaviour
     internal void NextLevel()
     {
         levelControl.LevelUp();
-        SceneManager.LoadScene("Dungeon");
+        SceneManager.LoadScene("RDG Test Ground");
     }
 
     private void Awake()
     {
         _instance = this;
-        if(dungeonGenerator != null)
+        
+    }
+
+    private void Start()
+    {
+        if (dungeonGenerator != null)
             dungeonGenerator.Run();
     }
 
