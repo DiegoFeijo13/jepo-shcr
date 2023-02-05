@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private RDG rdg;
+    [SerializeField] private DungeonLevelControl levelControl;
+    [SerializeField] private DungeonGenerator dungeonGenerator;
 
     private bool _isPaused;
     private string _gameOverScene = "GameOver";
 
     private static GameManager _instance;
-    public static GameManager Instance {
+    public static GameManager Instance
+    {
         get
         {
             if (_instance == null)
@@ -23,14 +24,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    internal int CurrentLevel() => levelControl.CurrentLevel;
+    internal int EnemiesPerRoom() => levelControl.EnemiesPerRoom;
+
     internal void NextLevel()
     {
-        rdg.NextLevel();
+        levelControl.LevelUp();
+        SceneManager.LoadScene("RDG Test Ground");
     }
 
     private void Awake()
     {
         _instance = this;
+        
+    }
+
+    private void Start()
+    {
+        if (dungeonGenerator != null)
+            dungeonGenerator.Run();
     }
 
     public void SetPaused(bool isPaused) => _isPaused = isPaused;

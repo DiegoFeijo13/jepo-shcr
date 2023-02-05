@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState
-{
-    idle,
-    frozen,
-    walking,
-    attacking
-}
-
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -30,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         SetDirection(movementDirection);
-        
+
         UpdateMovement();
     }
 

@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class EnemiesDataBase : ScriptableObject
+public class EnemiesDatabase : ScriptableObject
 {
     public List<GameObject> Enemies = new List<GameObject>();
 
@@ -14,7 +13,14 @@ public class EnemiesDataBase : ScriptableObject
         if (Enemies.Count == 0)
             return Enemies;
 
+        var enemiesToReturn = new List<GameObject>();
         //TODO: Can be better. Maybe a level range?
-        return Enemies.Where(x => (x.GetComponent<EnemyBase>()).Level <= level).ToList();
+        foreach (var e in Enemies)
+        {
+            if(e.GetComponent<EnemyBase>().Level <= level)
+                enemiesToReturn.Add(e);
+        }
+        
+        return enemiesToReturn;
     }
 }

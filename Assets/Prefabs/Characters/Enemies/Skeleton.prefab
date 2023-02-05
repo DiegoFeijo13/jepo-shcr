@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   EnemyType: 1
-  MaxHealth: 2
+  MaxHealth: 50
   MainObject: {fileID: 9108196645631258010}
   Range: 0
   HitPushStrength: 0.5
