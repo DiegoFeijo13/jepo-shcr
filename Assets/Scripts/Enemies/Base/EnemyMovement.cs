@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private BoxCollider2D bounds;
+    [SerializeField] private float minMoveTime = 1f;
+    [SerializeField] private float maxMoveTime = 1.75f;
 
     protected EnemyState CurrentState { get; set; }
     protected Vector3 movementDirection;
@@ -14,9 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 directionVector;
 
-    private float moveTimeSeconds;
-    private float minMoveTime = 1f;
-    private float maxMoveTime = 1.75f;
+    //private float moveTimeSeconds;
     private float waitTimeSeconds;
 
     private EnemyBase enemyBase;
@@ -29,7 +29,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         ChangeDirection();
     }
@@ -44,36 +43,27 @@ public class EnemyMovement : MonoBehaviour
 
     void UpdateDirection()
     {
-        if (CurrentState == EnemyState.walking)
+        waitTimeSeconds -= Time.deltaTime;
+        if (enemyBase.CanMove())
         {
-            moveTimeSeconds -= Time.deltaTime;
-            if (moveTimeSeconds <= 0)
+            if (enemyBase.CharacterInRange == null)
             {
-                moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
-                CurrentState = EnemyState.idle;
-            }
+                if (waitTimeSeconds > 0)
+                    return;
 
-            if (enemyBase.CharacterInRange != null)
-            {
-                directionVector = enemyBase.CharacterInRange.transform.position - transform.position;
-                directionVector.Normalize();
+                EnemyOutOfRangeMovement();
             }
+            else
+                EnemyInRangeMovement();
+
         }
         else
         {
-            waitTimeSeconds -= Time.deltaTime;
-            if (waitTimeSeconds <= 0)
-            {
-                ChooseDifferentDirection();
-                CurrentState = EnemyState.walking;
-                waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
-            }
-        }
-
-        if (enemyBase.GetHealth() <= 0)
-        {
             directionVector = Vector2.zero;
         }
+
+        if (waitTimeSeconds <= 0)
+            waitTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
 
         SetDirection(directionVector);
     }
@@ -148,6 +138,24 @@ public class EnemyMovement : MonoBehaviour
         }
         SetDirectionInternal(direction);
     }
+
+    protected virtual void EnemyOutOfRangeMovement()
+    {
+        ChooseDifferentDirection();
+    }
+
+    protected virtual void EnemyInRangeMovement()
+    {
+        directionVector = enemyBase.CharacterInRange.transform.position - transform.position;
+        directionVector.Normalize();
+    }
+
+    #region Predefined IA Movements
+    protected void RandomMovement()
+    {
+
+    }
+    #endregion
 
     #region Public Methods
     internal bool IsMoving() => movementDirection != Vector3.zero;

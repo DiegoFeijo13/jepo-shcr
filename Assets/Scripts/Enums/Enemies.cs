@@ -19,4 +19,5 @@ public enum EnemyType
 {    
     [Description("Skeleton")] Skeleton = 1,
     [Description("Coffin")] Coffin = 2,
+    [Description("Float Eye")] FloatEye = 3,
 }

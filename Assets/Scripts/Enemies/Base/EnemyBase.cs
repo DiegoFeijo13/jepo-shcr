@@ -9,15 +9,12 @@ public class EnemyBase : AttackableBase
     [SerializeField] public int Level;
     [SerializeField] protected EnemyType EnemyType;
     [SerializeField] protected int MaxHealth;
-    [SerializeField] protected GameObject MainObject;
-    [SerializeField] protected int Range;
-    [SerializeField] protected float HitPushStrength;
-    [SerializeField] protected float HitPushDuration;
     [SerializeField] protected float DestroyDelayOnDeath;
     [SerializeField] protected GameObject DeathFX;
     [SerializeField] protected float DelayDeathFX;
     [SerializeField] protected int MinDamage;
     [SerializeField] protected int MaxDamage;
+    [SerializeField] protected float AttackRecoverSpeed = 1f;
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
     [SerializeField] protected GameObject CollisionTrigger;
@@ -27,18 +24,18 @@ public class EnemyBase : AttackableBase
 
     protected float _health;
 
-    protected EnemyMovement movement;    
+    protected EnemyMovement movement;
 
     protected Vector3 startPos;
 
     protected SpriteRenderer _spriteRenderer;
     protected Color _defaultColor;
-    
+
     protected EnemyState CurrentState { get; set; }
 
     private void Awake()
     {
-        movement = GetComponent<EnemyMovement>();        
+        movement = GetComponent<EnemyMovement>();
 
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer != null)
@@ -46,10 +43,9 @@ public class EnemyBase : AttackableBase
 
         CurrentState = EnemyState.idle;
         _health = MaxHealth;
-        if (MainObject != null)
-        {
-            startPos = MainObject.transform.position;
-        }
+
+        startPos = gameObject.transform.position;
+
     }
 
     private void MakeLoot()
@@ -78,14 +74,19 @@ public class EnemyBase : AttackableBase
 
         EnemyScore.UpdateKills(this.EnemyType);
         MakeLoot();
-        
+
         StartCoroutine(DestroyCo(DestroyDelayOnDeath));
     }
 
     #region Public Methods
     public virtual void OnAttack(GameObject character)
     {
-        throw new System.NotImplementedException();
+        if (CurrentState != EnemyState.attacking)
+        {
+            var damage = Calculator.CalculateDamage(MinDamage, MaxDamage);
+            character.GetComponent<Character>().DealDamage(damage, Calculator.IsLastRollCritical);
+            StartCoroutine(AttackCo());
+        }
     }
 
     public override void OnHit(Vector2 pushDirection, ItemType itemType, int damage, bool isCritical)
@@ -100,14 +101,13 @@ public class EnemyBase : AttackableBase
         }
     }
 
-    public void FullRestore()
+    internal bool CanMove()
     {
-        MainObject.SetActive(true);
-        Visuals.SetActive(true);
-        CollisionTrigger.SetActive(true);
-        MainObject.transform.position = startPos;
-        _health = MaxHealth;
-        CurrentState = EnemyState.idle;
+        return
+            _health > 0 &&
+            CurrentState != EnemyState.attacking &&
+            CurrentState != EnemyState.frozen;
+
     }
     #endregion Public Methods
 
@@ -116,14 +116,14 @@ public class EnemyBase : AttackableBase
     {
         yield return new WaitForSeconds(delay);
 
-        Destroy(MainObject);
+        Destroy(gameObject);
     }
 
     IEnumerator DeathFXCo(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        Instantiate(DeathFX, base.transform.position, Quaternion.identity, MainObject.transform);
+        Instantiate(DeathFX, base.transform.position, Quaternion.identity, gameObject.transform);
     }
 
     IEnumerator HitEffectCo(float delay, int damage, bool isCritical)
@@ -133,9 +133,9 @@ public class EnemyBase : AttackableBase
 
         _spriteRenderer.color = Color.red;
         var collider = gameObject.GetComponent<BoxCollider2D>();
-        if(collider != null)
+        if (collider != null)
             collider.enabled = false;
-        
+
         TextPopup.ShowDamage(damage, transform.position, isCritical);
 
         yield return new WaitForSeconds(delay);
@@ -147,6 +147,11 @@ public class EnemyBase : AttackableBase
 
     }
 
-    internal float GetHealth() => _health;
+    IEnumerator AttackCo()
+    {
+        CurrentState = EnemyState.attacking;
+        yield return new WaitForSeconds(AttackRecoverSpeed);
+        CurrentState = EnemyState.idle;
+    }
     #endregion Coroutines
 }
