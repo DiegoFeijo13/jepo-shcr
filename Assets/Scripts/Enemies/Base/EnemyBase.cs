@@ -18,7 +18,6 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected float DelayDeathFX;
     [SerializeField] protected int MinDamage;
     [SerializeField] protected int MaxDamage;
-    //[SerializeField] protected BoxCollider2D Bounds;
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
     [SerializeField] protected GameObject CollisionTrigger;
@@ -31,7 +30,6 @@ public class EnemyBase : AttackableBase
     protected EnemyMovement movement;    
 
     protected Vector3 startPos;
-    //protected Vector2 directionVector;
 
     protected SpriteRenderer _spriteRenderer;
     protected Color _defaultColor;

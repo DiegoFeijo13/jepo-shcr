@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : EnemyBase
+public class Coffin : EnemyBase
 {
     [SerializeField] private GameObject[] enemies;    
     [SerializeField] private float cooldown;
@@ -11,17 +11,29 @@ public class EnemySpawn : EnemyBase
        
     private int lastEnemyIndex;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private Animator animator;
 
     private bool canSpawn = true;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void FixedUpdate()
     {
         RemoveDestroyed();
 
         if (CanSpawn())
-            SpawnEnemy();
+            PreSpawn();
     }
 
+    private void PreSpawn()
+    {
+        animator.SetBool("IsSpawning", true);
+    }
+
+    //Called by the Summon animation
     private void SpawnEnemy()
     {
         if(enemies != null && enemies.Length > 0)
@@ -32,9 +44,13 @@ public class EnemySpawn : EnemyBase
 
             GameObject enemyToSpawn = enemies[lastEnemyIndex];
 
-            GameObject newEnemy = Instantiate(enemyToSpawn, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            Vector3 pos = gameObject.transform.position + Vector3.down;
+
+            GameObject newEnemy = Instantiate(enemyToSpawn, pos, Quaternion.identity);
 
             spawnedEnemies.Add(newEnemy);
+
+            animator.SetBool("IsSpawning", false);
 
             StartCoroutine(CooldownCo());
         }

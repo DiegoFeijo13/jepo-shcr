@@ -18,5 +18,5 @@ public enum EnemyMovementType
 public enum EnemyType
 {    
     [Description("Skeleton")] Skeleton = 1,
-    [Description("Spawn")] Spawn = 2,
+    [Description("Coffin")] Coffin = 2,
 }
