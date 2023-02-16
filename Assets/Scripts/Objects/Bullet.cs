@@ -32,12 +32,17 @@ namespace Assets.Scripts.Objects
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.gameObject.CompareTag("Walls") || collision.gameObject.CompareTag("Objects"))
+            {
+                Destroy(this.gameObject);
+            }
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 var enemyBase = collision.gameObject.GetComponent<EnemyBase>();
                 if (enemyBase != null)
                 {
-                    int damage = Calculator.CalculateDamage(minDamage,maxDamage);
+                    int damage = Calculator.CalculateDamage(minDamage, maxDamage);
                     enemyBase.OnHit(gameObject.transform.position, ItemType.Bullet, damage, Calculator.IsLastRollCritical);
                 }
 
@@ -45,13 +50,7 @@ namespace Assets.Scripts.Objects
 
                 Destroy(this.gameObject);
             }
-
-            if (collision.gameObject.CompareTag("Walls") || collision.gameObject.CompareTag("Objects"))
-            {
-                Destroy(this.gameObject);
-            }
         }
-
 
         private IEnumerator KnockCo(GameObject obj)
         {
