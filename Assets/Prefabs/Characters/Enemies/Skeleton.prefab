@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9108196645631258011}
   - component: {fileID: 6038364002463941700}
-  - component: {fileID: 5016819981935838211}
+  - component: {fileID: 8974355571553149022}
   - component: {fileID: 9108196645631258013}
   - component: {fileID: 2488960124824205763}
   m_Layer: 0
@@ -276,7 +276,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   bounds: {fileID: 2488960124824205763}
---- !u!114 &5016819981935838211
+  minMoveTime: 1
+  maxMoveTime: 1.75
+  inRangeMovementType: 1
+  outOfRangeMovementType: 3
+--- !u!114 &8974355571553149022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,21 +289,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9108196645631258010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e78ac8a3c04e9c04dbc4e04268c80228, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a8884ebcf408e645a3fde507069cc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 1
   EnemyType: 1
-  MaxHealth: 50
-  MainObject: {fileID: 9108196645631258010}
-  Range: 0
-  HitPushStrength: 0.5
-  HitPushDuration: 0.2
+  MaxHealth: 100
   DestroyDelayOnDeath: 0.4
   DeathFX: {fileID: 8051817626491401430, guid: d314d0a39b7a5e14f8a9d265e4d8ac46, type: 3}
   DelayDeathFX: 0
-  MinDamage: 20
-  MaxDamage: 100
   LootTable: {fileID: 11400000, guid: 2fdaaa7657933d64f9c336f62600fa71, type: 2}
   Visuals: {fileID: 9108196647046866998}
   CollisionTrigger: {fileID: 9108196645653207643}
@@ -361,10 +359,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9108196645653207644}
   - component: {fileID: 3341226500950317106}
+  - component: {fileID: 8815836695153466449}
   - component: {fileID: 9108196645653207645}
-  - component: {fileID: 7703221621926101819}
   m_Layer: 0
-  m_Name: CollisionTrigger
+  m_Name: MeleeAttackCollisionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,6 +398,21 @@ MonoBehaviour:
   thrust: 1
   knockTime: 0.5
   knockBackOnTag: Player
+--- !u!114 &8815836695153466449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108196645653207643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391f928ad0ffb5a4fa999d14c1e73e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDamage: 20
+  MaxDamage: 100
+  AttackCooldown: 0
 --- !u!58 &9108196645653207645
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -416,18 +429,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &7703221621926101819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108196645653207643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47235c03262ced64d9145bf1ac275ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9108196647046866998
 GameObject:
   m_ObjectHideFlags: 0

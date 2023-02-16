@@ -12,7 +12,8 @@ public enum EnemyMovementType
 {
     idle,
     chasePlayer,
-    awayFromPlayer
+    awayFromPlayer,
+    random
 }
 
 public enum EnemyType

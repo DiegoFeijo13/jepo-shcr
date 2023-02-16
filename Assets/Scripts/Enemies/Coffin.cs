@@ -15,8 +15,9 @@ public class Coffin : EnemyBase
 
     private bool canSpawn = true;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         animator = GetComponent<Animator>();
     }
 

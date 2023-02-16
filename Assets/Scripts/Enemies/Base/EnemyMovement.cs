@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D bounds;
     [SerializeField] private float minMoveTime = 1f;
     [SerializeField] private float maxMoveTime = 1.75f;
+    [SerializeField] private EnemyMovementType inRangeMovementType = EnemyMovementType.chasePlayer;
+    [SerializeField] private EnemyMovementType outOfRangeMovementType = EnemyMovementType.random;
 
     protected EnemyState CurrentState { get; set; }
     protected Vector3 movementDirection;
@@ -19,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     //private float moveTimeSeconds;
     private float waitTimeSeconds;
 
-    private EnemyBase enemyBase;
+    protected EnemyBase enemyBase;
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         ChangeDirection();
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         SetDirectionInternal(movementDirection);
 
@@ -117,7 +119,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected void SetDirectionInternal(Vector2 direction)
     {
-        if (CurrentState == EnemyState.frozen || CurrentState == EnemyState.attacking)
+        if (!enemyBase.CanMove())
             return;
 
         movementDirection = new Vector3(direction.x, direction.y, 0);
@@ -141,19 +143,54 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void EnemyOutOfRangeMovement()
     {
-        ChooseDifferentDirection();
+        switch (outOfRangeMovementType)
+        {
+            case EnemyMovementType.chasePlayer:
+                ChasePlayer();
+                break;
+            case EnemyMovementType.awayFromPlayer:
+                AwayFromPlayer();
+                break;
+            case EnemyMovementType.random:
+            default:
+                RandomMovement();
+                break;
+        }
     }
 
     protected virtual void EnemyInRangeMovement()
     {
-        directionVector = enemyBase.CharacterInRange.transform.position - transform.position;
-        directionVector.Normalize();
+        switch (inRangeMovementType)
+        {
+            case EnemyMovementType.chasePlayer:
+                ChasePlayer();
+                break;
+            case EnemyMovementType.awayFromPlayer:
+                AwayFromPlayer();
+                break;
+            case EnemyMovementType.random:
+            default:
+                RandomMovement();
+                break;
+        }
     }
 
     #region Predefined IA Movements
     protected void RandomMovement()
     {
+        ChooseDifferentDirection();
+    }
 
+    protected void ChasePlayer()
+    {
+        directionVector = enemyBase.CharacterInRange.transform.position - transform.position;
+        directionVector.Normalize();
+    }
+
+    protected void AwayFromPlayer()
+    {
+        directionVector = enemyBase.CharacterInRange.transform.position + transform.position;
+        directionVector.Normalize();
     }
     #endregion
 

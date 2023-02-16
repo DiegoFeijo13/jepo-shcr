@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.General;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class EnemyBase : AttackableBase
@@ -12,9 +9,6 @@ public class EnemyBase : AttackableBase
     [SerializeField] protected float DestroyDelayOnDeath;
     [SerializeField] protected GameObject DeathFX;
     [SerializeField] protected float DelayDeathFX;
-    [SerializeField] protected int MinDamage;
-    [SerializeField] protected int MaxDamage;
-    [SerializeField] protected float AttackRecoverSpeed = 1f;
     [SerializeField] protected LootTable LootTable;
     [SerializeField] protected GameObject Visuals;
     [SerializeField] protected GameObject CollisionTrigger;
@@ -33,7 +27,7 @@ public class EnemyBase : AttackableBase
 
     protected EnemyState CurrentState { get; set; }
 
-    private void Awake()
+    protected void Awake()
     {
         movement = GetComponent<EnemyMovement>();
 
@@ -79,16 +73,6 @@ public class EnemyBase : AttackableBase
     }
 
     #region Public Methods
-    public virtual void OnAttack(GameObject character)
-    {
-        if (CurrentState != EnemyState.attacking)
-        {
-            var damage = Calculator.CalculateDamage(MinDamage, MaxDamage);
-            character.GetComponent<Character>().DealDamage(damage, Calculator.IsLastRollCritical);
-            StartCoroutine(AttackCo());
-        }
-    }
-
     public override void OnHit(Vector2 pushDirection, ItemType itemType, int damage, bool isCritical)
     {
         _health -= damage;
@@ -109,6 +93,19 @@ public class EnemyBase : AttackableBase
             CurrentState != EnemyState.frozen;
 
     }
+
+    internal void FlipSpriteX(bool flip)
+    {
+        if (Visuals == null)
+            return;
+        
+        if (Visuals.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
+            spriteRenderer.flipX = flip;
+    }
+
+    internal EnemyState GetCurrentState() => CurrentState;
+
+    internal void SetState(EnemyState state) => CurrentState = state;
     #endregion Public Methods
 
     #region Coroutines
@@ -143,15 +140,7 @@ public class EnemyBase : AttackableBase
 
         if (collider != null && _health > 0)
             collider.enabled = true;
-
-
     }
 
-    IEnumerator AttackCo()
-    {
-        CurrentState = EnemyState.attacking;
-        yield return new WaitForSeconds(AttackRecoverSpeed);
-        CurrentState = EnemyState.idle;
-    }
     #endregion Coroutines
 }

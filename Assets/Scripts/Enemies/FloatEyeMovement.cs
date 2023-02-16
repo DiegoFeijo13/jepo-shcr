@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class FloatEyeMovement : EnemyMovement
 {
-    
+    protected new void FixedUpdate()
+    {
+        base.FixedUpdate();
+        this.enemyBase.FlipSpriteX(facingDirection.x > 0);
+
+    }
 }
